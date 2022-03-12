@@ -8,5 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "ejs-mate": "^3.0.0",
+    "express": "^4.17.3"
+  }
 }
