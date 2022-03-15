@@ -8,7 +8,7 @@ const WorkoutSchema = new Schema({
       // name workout (default option too)
       type: String,
       required: true,
-    },
+    }/*,
     workoutDate: {
       // date of workout
       type: Date,
@@ -27,7 +27,7 @@ const WorkoutSchema = new Schema({
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
-    },
+    }, */
   });
 
   module.exports = mongoose.model('Workout', WorkoutSchema);

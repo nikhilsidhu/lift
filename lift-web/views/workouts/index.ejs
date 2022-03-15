@@ -4,8 +4,7 @@
 
     <ul>
         <% for (let workout of workouts) { %>
-        <li> <a href="/workouts/<%= workout._id %>"> <%=workout.workoutName%> -
-                <%= workout.workoutDate.toDateString() %></a></li>
+        <li> <a href="/workouts/<%= workout._id %>"><%=workout.workoutName%></a></li>
         <% } %>
     </ul>
 

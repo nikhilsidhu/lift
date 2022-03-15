@@ -19,6 +19,8 @@ app.engine('ejs', engine);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get('/', (req, res) => {ft
 
     res.render('home');
@@ -30,17 +32,22 @@ app.get('/workouts', async (req, res) => {
 
 })
 
+app.get('/workouts/new', (req, res) => {
+    res.render('workouts/new');
+})
+
+app.post('/workouts', async (req, res) => {
+    const workout = new Workout(req.body.workout);
+    await workout.save();
+    res.redirect(`/workouts/${workout._id}`);
+})
+
 app.get('/workouts/:id', async (req, res) => {
     const workout = await Workout.findById(req.params.id)
     res.render('workouts/show', { workout });
 })
 
-app.get('/addworkout', async (req, res) => {
-    const workout = new Workout({workoutName: 'Upper #1', workoutDate: 01-01-2000, workoutTime: 2000});
-    await workout.save();
 
-    res.send(workout);
-})
 
 app.listen(port, () => {
     console.log(`Listening on Port ${port}.`);
