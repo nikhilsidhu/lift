@@ -26,11 +26,14 @@ app.get('/', (req, res) => {ft
 
 app.get('/workouts', async (req, res) => {
     const workouts = await Workout.find({});
-    res.render('workouts/idnex');
+    res.render('workouts/index', { workouts });
 
 })
 
-
+app.get('/workouts/:id', async (req, res) => {
+    const workout = await Workout.findById(req.params.id)
+    res.render('workouts/show', { workout });
+})
 
 app.get('/addworkout', async (req, res) => {
     const workout = new Workout({workoutName: 'Upper #1', workoutDate: 01-01-2000, workoutTime: 2000});
