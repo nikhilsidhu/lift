@@ -4,8 +4,16 @@
 <div>
     <a href="/workouts/new">Add Workout</a>
 </div>
-    <ul>
-        <% for (let workout of workouts) { %>
-        <li> <a href="/workouts/<%= workout._id %>"><%=workout.workoutName%></a></li>
-        <% } %>
-    </ul>
+<% for (let workout of workouts) { %>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="btn" href="/workouts/<%=workout._id%>"><%= workout.workoutName %></a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
