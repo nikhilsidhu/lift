@@ -1,7 +1,9 @@
 <% layout('layouts/boilerplate') %>
 
-<h1>Workout Log</h1>
-
+<h1>All Workouts</h1>
+<div>
+    <a href="/workouts/new">Add Workout</a>
+</div>
     <ul>
         <% for (let workout of workouts) { %>
         <li> <a href="/workouts/<%= workout._id %>"><%=workout.workoutName%></a></li>

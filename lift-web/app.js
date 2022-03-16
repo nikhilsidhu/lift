@@ -3,6 +3,7 @@ const engine = require('ejs-mate');
 const port = 3000;
 const path = require('path');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const Workout = require('./models/workout');
 
 mongoose.connect('mongodb://localhost:27017/lift');
@@ -20,6 +21,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {ft
 
@@ -47,7 +49,23 @@ app.get('/workouts/:id', async (req, res) => {
     res.render('workouts/show', { workout });
 })
 
+app.get('/workouts/:id/edit', async (req, res) => {
+    const workout = await Workout.findById(req.params.id)
+    res.render('workouts/edit', { workout });
+})
 
+
+app.put('/workouts/:id', async (req, res) => {
+    const { id } = req.params;
+    const workout = await Workout.findByIdAndUpdate(id, {...req.body.workout});
+    res.redirect(`/workouts/${workout._id}`);
+})
+
+app.delete('/workouts/:id', async (req, res) => {
+    const { id } = req.params;
+    await Workout.findByIdAndDelete(id);
+    res.redirect('/workouts');
+})
 
 app.listen(port, () => {
     console.log(`Listening on Port ${port}.`);
