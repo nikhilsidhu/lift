@@ -1,10 +1,24 @@
 <% layout('layouts/boilerplate') %>
 
-<form action="/workouts" method="POST">
-    <div>
-        <label for="title">Title</label>
-        <input type="text" id="title" name="workout[workoutName]">
-    </div>
+<div class="row">
+    <h1 class="text-center">New Workout</h1>
+    <div class="col-6 offset-3">
 
-    <button>Add Workout</button>
-    </form>
+        <form action="/workouts" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="workout[workoutName]">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="date">Date</label>
+                <input class="form-control" type="date" id="date" name="workout[workoutDate]" %>">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary">Add Workout</button>
+            </div>
+            </form>
+            <a href="/workouts">Back to Log</a>
+    </div>
+</div>
+
+

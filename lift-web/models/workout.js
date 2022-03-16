@@ -8,12 +8,12 @@ const WorkoutSchema = new Schema({
       // name workout (default option too)
       type: String,
       required: true,
-    }/*,
+    },
     workoutDate: {
       // date of workout
       type: Date,
       required: true,
-    },
+    }/*,
     workoutTime: {
       // how long was the whole workout
       type: Number,
