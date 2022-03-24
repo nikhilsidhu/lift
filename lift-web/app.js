@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const Workout = require('./models/workout');
+const Exercise = require('./models/exercise');
 const temporalDate = require('./public/javascripts/temporalDate.js');  
 
 mongoose.connect('mongodb://localhost:27017/lift');
@@ -46,7 +47,8 @@ app.post('/workouts', async (req, res) => {
 })
 
 app.get('/workouts/:id', async (req, res) => {
-    const workout = await Workout.findById(req.params.id)
+    const workout = await Workout.findById(req.params.id).populate('exercises');
+    console.log(workout);
     res.render('workouts/show', { workout, temporalDate});
 })
 
@@ -66,6 +68,15 @@ app.delete('/workouts/:id', async (req, res) => {
     const { id } = req.params;
     await Workout.findByIdAndDelete(id);
     res.redirect('/workouts');
+})
+
+app.post('/workouts/:id/exercises', async (req, res) => {
+    const workout = await Workout.findById(req.params.id);
+    const exercise = new Exercise(req.body.exercise);
+    workout.exercises.push(exercise);
+    await exercise.save();
+    await workout.save();
+    res.redirect(`/workouts/${workout._id}`);
 })
 
 app.listen(port, () => {

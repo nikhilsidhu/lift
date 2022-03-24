@@ -13,7 +13,16 @@ const WorkoutSchema = new Schema({
       // date of workout
       type: Date,
       required: true,
-    }/*,
+    },
+
+    exercises: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: 'Exercise'
+      }
+    ]
+    
+    /*,
     workoutTime: {
       // how long was the whole workout
       type: Number,
