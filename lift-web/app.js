@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const Workout = require('./models/workout');
+const temporalDate = require('./public/javascripts/temporalDate.js');  
 
 mongoose.connect('mongodb://localhost:27017/lift');
 
@@ -30,7 +31,7 @@ app.get('/', (req, res) => {ft
 
 app.get('/workouts', async (req, res) => {
     const workouts = await Workout.find({});
-    res.render('workouts/index', { workouts });
+    res.render('workouts/index', { workouts, temporalDate });
 
 })
 
