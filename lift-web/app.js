@@ -47,7 +47,7 @@ app.post('/workouts', async (req, res) => {
 
 app.get('/workouts/:id', async (req, res) => {
     const workout = await Workout.findById(req.params.id)
-    res.render('workouts/show', { workout });
+    res.render('workouts/show', { workout, temporalDate});
 })
 
 app.get('/workouts/:id/edit', async (req, res) => {
