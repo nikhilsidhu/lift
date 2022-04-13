@@ -1,4 +1,77 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background-image: repeating-linear-gradient(#162169, #060A22, #060A22, #162169);
+}
+
+div.exercise-item:hover{
+
+    z-index: 2;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .card a {
     z-index: 2;
     position: relative;
+}
+
+.editableInput {
+    border: none;
+    width: 50px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+
+}
+
+.buttonouter *{
+    z-index: 1;
+}
+
+.buttonoverlap * {
+    z-index: 2;
+    visibility: hidden;
+}
+
+.buttonouter:hover .buttonoverlap *{
+    visibility: visible;
+}
+
+.editableSetInput {
+    width: 50px;
+    margin: auto;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input:focus {
+    background-color: white;
+}
+
+#setForm {
+    text-align: center;
+}
+
+#editSetButton {
+    display: none;
+}
+
+#editWorkoutNameButton {
+    display: none;
+}
+
+#editWorkoutNameInput {
+    border: none;
+    font-size: 1.5em;
+    width: 200px;
 }

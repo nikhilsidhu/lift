@@ -3,11 +3,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const exerciseSchema = new Schema({
-    exerciseName: {
-      // name of exercise
-      type: String,
-      required: true,
-    }/* ,
+  exerciseName: {
+    // name of exercise
+    type: String,
+    required: true,
+  },
+  sets: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Set'
+    }
+  ]/* ,
     sets: {
       // array of sets completed
       type: [setSchema],
@@ -23,6 +29,6 @@ const exerciseSchema = new Schema({
       type: String,
       required: false,
     }, */
-  });
+});
 
-  module.exports = mongoose.model('Exercise', exerciseSchema);
+module.exports = mongoose.model('Exercise', exerciseSchema);
