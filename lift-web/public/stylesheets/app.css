@@ -193,7 +193,6 @@ tr.addsetcollapse:hover {
 
 #addsetcollapse:hover {
     color: white;
-    border-color: #E0FBFC;
 }
 
 #addsetcollapse:focus {
@@ -279,6 +278,13 @@ a.btn, button.btn {
     color: #E0FBFC;
 }
 
+
+
 p.svg > svg {
     vertical-align: text-bottom;
+}
+
+p.svg:hover {
+    border: none;
+
 }

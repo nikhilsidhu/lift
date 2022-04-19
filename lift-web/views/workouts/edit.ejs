@@ -7,11 +7,11 @@
             <form action="/workouts/<%=workout._id%>?_method=PUT" method="POST">
                 <div class="mb-3">
                     <label class="form-label" for="title">Title</label>
-                    <input class="form-control" type="text" id="title" name="workout[workoutName]" value="<%= workout.workoutName%>">
+                    <input class="form-control" type="text" id="title" name="workout[name]" value="<%= workout.workoutName%>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="date">Date</label>
-                    <input class="form-control" type="date" id="date" name="workout[workoutDate]" value="<%= workout.workoutDate%>">
+                    <input class="form-control" type="date" id="date" name="workout[date]" value="<%= workout.workoutDate%>">
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary">Update Workout</button>
