@@ -69,7 +69,7 @@
   <div class="col-10">
     <form class="collapse" id="exerciseForm" action="/workouts/<%=workout._id%>/exercises" method="POST">
       <div class="input-group mb-3">
-        <input class="form-control" type="text" id="exerciseName" name="exercise[exerciseName]" placeholder="Exercise name">
+        <input class="form-control" type="text" id="exerciseName" name="exercise[name]" placeholder="Exercise name">
           <div class="input-group-append">
             <button class="btn">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -100,7 +100,7 @@
 
         <!-- Exercise item collapse -->
         <div class="exercise-header card-header d-flex align-items-center buttonouter" data-toggle="collapse" data-target="#collapseExerciseItem<%=x%>" aria-expanded="false" aria-controls="collapseExerciseItem<%= x %>">
-                <h5 class="mb-0"><%=exercise.exerciseName%></h6>
+                <h5 class="mb-0"><%=exercise.name%></h6>
           <!-- Delete exercise button -->
           <div class="ms-auto h-100">
             <form class="buttonoverlap" action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
