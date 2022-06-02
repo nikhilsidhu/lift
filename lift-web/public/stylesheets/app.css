@@ -7,13 +7,13 @@ body {
     color: #E0FBFC;
 
     height: auto;
-    background: linear-gradient(#0b4fa8,  #050608) fixed;
+    background: linear-gradient(#0b4fa8, #050608) fixed;
     background-repeat: no-repeat;
     overflow: auto;
     overscroll-behavior: none;
 }
 
-input {
+form>input {
     color: #E0FBFC;
     background: rgba(0, 0, 0, 0);
 }
@@ -23,6 +23,7 @@ input:focus {
 }
 
 .editableInput {
+    color: #E0FBFC;
     border: none;
     width: 50px;
     text-align: center;
@@ -30,7 +31,7 @@ input:focus {
 
 }
 
-.buttonouter *{
+.buttonouter * {
     z-index: 1;
 }
 
@@ -39,7 +40,7 @@ input:focus {
     visibility: hidden;
 }
 
-.buttonouter:hover .buttonoverlap *{
+.buttonouter:hover .buttonoverlap * {
     visibility: visible;
 }
 
@@ -56,7 +57,7 @@ table.table {
     width: 100%;
 }
 
-.table > :not(:first-child) {
+.table> :not(:first-child) {
     border-top: 1px solid #98c1d93a;
 }
 
@@ -64,7 +65,7 @@ td {
     border-color: #98c1d93a;
     z-index: 1;
     vertical-align: middle;
-    border-bottom: 1px solid #98c1d93a ;
+    border-bottom: 1px solid #98c1d93a;
     transition: all .2s ease-in-out;
     overflow: hidden;
 }
@@ -121,7 +122,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }
 
 #setForm {
@@ -238,7 +239,7 @@ tr.addsetcollapse:hover {
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.096);
 }
 
-.exercise-header:hover{
+.exercise-header:hover {
     box-shadow: 0 0 0 1px #e0fbfc1f;
 }
 
@@ -260,7 +261,8 @@ tr.addsetcollapse:hover {
 
 
 
-a.btn, button.btn {
+a.btn,
+button.btn {
     color: #98c1d9e7;
 }
 
@@ -270,7 +272,8 @@ a.btn, button.btn {
     border-color: #98C1D9;
 }
 
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
     box-shadow: none;
 }
 
@@ -280,11 +283,29 @@ a.btn, button.btn {
 
 
 
-p.svg > svg {
+p.svg>svg {
     vertical-align: text-bottom;
 }
 
 p.svg:hover {
     border: none;
+
+}
+
+.workout-input {
+    color: #E0FBFC;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px solid #e0fbfc1f;
+}
+
+.workout-input::placeholder {
+    color: #e0fbfc81;
+}
+
+.workout-input:focus {
+    color: #E0FBFC;
+    outline: none;
+    background: rgba(0, 0, 0, 0);
 
 }
