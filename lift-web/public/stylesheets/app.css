@@ -1,0 +1,311 @@
+html {
+    height: auto;
+    overflow: hidden;
+}
+
+body {
+    color: #E0FBFC;
+
+    height: auto;
+    background: linear-gradient(#0b4fa8, #050608) fixed;
+    background-repeat: no-repeat;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+form>input {
+    color: #E0FBFC;
+    background: rgba(0, 0, 0, 0);
+}
+
+input:focus {
+    outline: none;
+}
+
+.editableInput {
+    color: #E0FBFC;
+    border: none;
+    width: 50px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+
+}
+
+.buttonouter * {
+    z-index: 1;
+}
+
+.buttonoverlap * {
+    z-index: 2;
+    visibility: hidden;
+}
+
+.buttonouter:hover .buttonoverlap * {
+    visibility: visible;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.card:hover {
+    border: 1px solid #e0fbfc31;
+}
+
+table.table {
+    color: #E0FBFC;
+    width: 100%;
+}
+
+.table> :not(:first-child) {
+    border-top: 1px solid #98c1d93a;
+}
+
+td {
+    border-color: #98c1d93a;
+    z-index: 1;
+    vertical-align: middle;
+    border-bottom: 1px solid #98c1d93a;
+    transition: all .2s ease-in-out;
+    overflow: hidden;
+}
+
+td>input:hover {
+    transform: scale(1.1);
+}
+
+.highlight-row {
+    border-top: 1px solid #98c1d91f;
+}
+
+.highlight-row:hover {
+    color: white;
+    z-index: 2;
+    box-shadow: 0 0 0 1px #e0fbfc31;
+}
+
+.table thead>tr>th {
+    border: none;
+}
+
+.table>thead>tr:hover {
+    border: none;
+}
+
+th.tableheading:hover {
+    border: none;
+}
+
+.editableSetInput {
+    width: 50px;
+    margin: auto;
+    color: #E0FBFC;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+}
+
+td.editableSetInput {
+    width: 100px;
+}
+
+.editableSetInput:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#setForm {
+    text-align: center;
+}
+
+#editSetButton {
+    display: none;
+}
+
+#editWorkoutNameButton {
+    display: none;
+}
+
+#editWorkoutNameInput {
+    border: none;
+    font-size: 1.5em;
+    width: 200px;
+    transition: all .2s ease-in-out;
+}
+
+#editWorkoutNameInput:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+#editWorkoutNameInput:focus {
+    transform: scale(1.1);
+}
+
+.workout-header {
+    border: none;
+}
+
+.workout-header:hover {
+    border: none;
+}
+
+.bi.bi-chevron-compact-left {
+    margin-top: 10px;
+    width: 45px;
+    height: 45px;
+    color: #E0FBFC;
+    transition: all .1s ease-in-out;
+}
+
+.bi.bi-chevron-compact-left:hover {
+    transform: scale(1.1);
+}
+
+
+table .w-4 {
+    width: 4%;
+}
+
+table .w-32 {
+    width: 32%;
+}
+
+.addsetcollapse {
+    background: rgba(0, 0, 0, 0);
+    border-bottom: none;
+}
+
+tr.addsetcollapse:hover {
+    border: none;
+    box-shadow: none;
+}
+
+#addsetcollapse:hover {
+    color: white;
+}
+
+#addsetcollapse:focus {
+    outline: none;
+}
+
+#addExerciseCollapse {
+    color: #e0fbfcad;
+    width: 150px;
+    border-radius: 20px;
+    border-color: #98C1D9;
+}
+
+#addExerciseCollapse:hover {
+    color: white;
+    border-color: #E0FBFC;
+}
+
+#addExerciseCollapse:focus {
+    outline: none;
+}
+
+#exerciseName {
+    width: 50px;
+    margin: auto;
+    color: #E0FBFC;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+#exerciseName::placeholder {
+    color: #E0FBFC;
+}
+
+
+
+
+.nav {
+    background-color: #050608;
+}
+
+.exercise-header {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.096);
+}
+
+.exercise-header:hover {
+    box-shadow: 0 0 0 1px #e0fbfc1f;
+}
+
+.workout-item {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.096);
+}
+
+.workout-item:hover {
+    box-shadow: 0 0 0 1px #e0fbfc1f;
+}
+
+.exercise-item-button {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 0;
+}
+
+
+
+
+a.btn,
+button.btn {
+    color: #98c1d9e7;
+}
+
+.btn-border {
+    width: 150px;
+    border-radius: 20px;
+    border-color: #98C1D9;
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: none;
+}
+
+.btn:hover {
+    color: #E0FBFC;
+}
+
+
+
+p.svg>svg {
+    vertical-align: text-bottom;
+}
+
+p.svg:hover {
+    border: none;
+
+}
+
+.workout-input {
+    color: #E0FBFC;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px solid #e0fbfc1f;
+}
+
+.workout-input::placeholder {
+    color: #e0fbfc81;
+}
+
+.workout-input:focus {
+    color: #E0FBFC;
+    outline: none;
+    background: rgba(0, 0, 0, 0);
+
+}
