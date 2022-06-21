@@ -19,18 +19,15 @@
           <div class="card-body">
 
             <!-- Edit workout name input -->
-            <form class="mb-1 d-flex justify-content-center" action="/workouts/<%=workout._id%>?_method=PUT" method="POST">
-                <input class="workoutinput text-center d-block justify-content-center mb-1" id="editWorkoutNameInput" type="text" name="workout[name]" value="<%= workout.name %>">
+            <form class="mb-1 d-flex justify-content-center needs-validation" action="/workouts/<%=workout._id%>?_method=PUT" method="POST" novalidate>
+                <input class="workoutinput text-center d-block justify-content-center mb-1" id="editWorkoutNameInput" type="text" name="workout[name]" value="<%= workout.name %>" required>
               <button id="editWorkoutNameButton" type="submit"></button>
             </form>
 
             <!-- workout date -->
-            <h6 class="text-center card-subtitle text-light">Date: <%= temporalDate.convertDate(workout.date).isoMonth%>-<%= temporalDate.convertDate(workout.date).isoDay%>-<%= temporalDate.convertDate(workout.date).isoYear%></h6>
+            <h6 class="text-center card-subtitle text-light"><%= temporalDate.convertDate(workout.date).isoMonth%>/<%= temporalDate.convertDate(workout.date).isoDay%>/<%= temporalDate.convertDate(workout.date).isoYear%></h6>
 
             <!-- Buttons -->
-
-            <!-- Edit workout -->
-            <!-- <a href="/workouts/<%= workout._id%>/edit" class="card-link btn btn-info">Edit Workout</a> -->
             
             <!-- Delete workout button -->
 

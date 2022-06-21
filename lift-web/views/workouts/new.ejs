@@ -12,14 +12,14 @@
     <div class="col-10 justify-content-center">
         <h1 class="text-center">Create New Workout</h1>
 
-        <form action="/workouts" method="POST">
+        <form action="/workouts" method="POST" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label class="form-label" for="title">Name</label>
-                <input class="form-control workout-input" type="text" id="title" name="workout[name]" placeholder="Workout name">
+                <input class="form-control workout-input" type="text" id="title" name="workout[name]" placeholder="Workout name" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="date">Date</label>
-                <input class="form-control workout-input" type="date" id="date" name="workout[date]" %>">
+                <input class="form-control workout-input" type="date" id="date" name="workout[date]" required>
             </div>
             <div class="mb-3">
                 <button class="btn btn-primary">Add Workout</button>
