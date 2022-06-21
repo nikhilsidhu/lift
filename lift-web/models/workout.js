@@ -21,22 +21,6 @@ const WorkoutSchema = new Schema({
       ref: 'Exercise'
     }
   ]
-
-  /*,
-  workoutTime: {
-    // how long was the whole workout
-    type: Number,
-    required: true,
-  },
-  workoutNote: {
-    // user note about entire workout
-    type: String,
-    required: false,
-  },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  }, */
 });
 
 module.exports = mongoose.model('Workout', WorkoutSchema);
