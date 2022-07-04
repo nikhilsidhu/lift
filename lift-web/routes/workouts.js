@@ -20,13 +20,12 @@ const validateWorkout = (req, res, next) => {
 router.get('/', catchAsync(async (req, res) => {
     const workouts = await Workout.find({});
     res.render('workouts/index', { workouts, temporalDate, });
-
 }))
 
 router.post('/', validateWorkout, catchAsync(async (req, res) => {
-    // if (!req.body.workout) throw new ExpressError('Invalid Workout Data', 400);
     const workout = new Workout(req.body.workout);
     await workout.save();
+    req.flash('success', 'Successfully made a new workout!');
     res.redirect(`/workouts/${workout._id}`);
 }))
 
@@ -44,6 +43,10 @@ router.get('/:id', catchAsync(async (req, res) => {
                 model: 'Set'
             }
         })
+    if (!workout) {
+        req.flash('error', 'Cannot find workout.');
+        return res.redirect('/workouts');
+    }
     res.render('workouts/show', { workout, temporalDate });
 }))
 
@@ -52,16 +55,17 @@ router.get('/:id/edit', catchAsync(async (req, res) => {
     res.render('workouts/edit', { workout });
 }))
 
-
 router.put('/:id', validateWorkout, catchAsync(async (req, res) => {
     const { id } = req.params;
     const workout = await Workout.findByIdAndUpdate(id, { ...req.body.workout });
+    req.flash('success', 'Successfully updated workout!');
     res.redirect(`/workouts/${workout._id}`);
 }))
 
 router.delete('/:id', catchAsync(async (req, res) => {
     const { id } = req.params;
     await Workout.findByIdAndDelete(id);
+    req.flash('success', 'Successfully deleted workout.');
     res.redirect('/workouts');
 }))
 
