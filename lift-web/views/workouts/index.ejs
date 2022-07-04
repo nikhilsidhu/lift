@@ -18,7 +18,7 @@
             <div class="row buttonouter">
                 <div class="col-9">
                     <div class="card-body">
-                        <a class="btn text-light stretched-link" href="/workouts/<%=workout._id%>"><%= workout.name %>&nbsp&nbsp&nbsp<%= temporalDate.convertDate(workout.date).isoMonth%>/<%= temporalDate.convertDate(workout.date).isoDay%>/<%= temporalDate.convertDate(workout.date).isoYear%></a>
+                        <a class="btn text-light stretched-link" href="/workouts/<%=workout._id%>"><%= workout.name %>&nbsp&nbsp&nbsp<%= temporalDate(workout.date).isoMonth%>/<%= temporalDate(workout.date).isoDay%>/<%= temporalDate(workout.date).isoYear%></a>
                     </div>
                 </div>
                 <div class="col">

@@ -7,10 +7,14 @@ body {
     color: #E0FBFC;
 
     height: auto;
-    background: linear-gradient(#0b4fa8, #050608) fixed;
+    background: linear-gradient(#0a499b, #050608) fixed;
     background-repeat: no-repeat;
     overflow: auto;
     overscroll-behavior: none;
+}
+
+nav.navbar {
+    background-color: #01244a;
 }
 
 form>input {
@@ -308,4 +312,8 @@ p.svg:hover {
     outline: none;
     background: rgba(0, 0, 0, 0);
 
+}
+
+footer.footer {
+    background-color: #000b17;
 }

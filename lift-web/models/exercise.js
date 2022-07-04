@@ -10,8 +10,17 @@ const exerciseSchema = new Schema({
   },
   sets: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Set'
+      weight: {
+        type: Number,
+        required: true,
+        min: 0
+      },
+
+      reps: {
+        type: Number,
+        required: true,
+        min: 1
+      }
     }
   ]
 });
