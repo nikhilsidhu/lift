@@ -129,7 +129,7 @@
       </div>
 
       <!-- Sets header -->
-      <% if (exercise.sets.length) { %>
+      <% if (exercise.sets) { %>
 
       <!-- Show sets table on load -->
       <div id="collapseExerciseItem<%=x%>" class="collapse show" aria-labelledby="">
@@ -164,10 +164,12 @@
                   method="POST">
                   <td class='text-center w-32'><%= y %></td>
                   <td class='text-center w-32'>
-                    <input class="editableInput" type="number" name="set[weightCompleted]" value="<%= set.weight %>">
+                    <input class="editableInput" type="number" name="set[weightCompleted]"
+                      value="<%= set.weightCompleted %>">
                   </td>
                   <td class='text-center w-32'>
-                    <input class="editableInput" type="number" name="set[repsCompleted]" value="<%= set.reps %>">
+                    <input class="editableInput" type="number" name="set[repsCompleted]"
+                      value="<%= set.repsCompleted %>">
                   </td>
                   <button id="editSetButton" type="submit"></button>
                 </form>
@@ -221,11 +223,11 @@
                   <td class='text-center w-25'><%= y %></td>
                   <td class='w-30'>
                     <input id="weightCompleted" class="form-control form-control-sm editableSetInput" type="number"
-                      name="set[weight]" value="0">
+                      name="set[weightCompleted]" value="0">
                   </td>
                   <td class='w-30'>
                     <input id="repsCompleted" class="form-control form-control-sm editableSetInput" type="number"
-                      name="set[reps]" value="0">
+                      name="set[repsCompleted]" value="0">
                   </td>
 
                   <!-- Submit set button -->

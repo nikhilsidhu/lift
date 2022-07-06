@@ -4,17 +4,16 @@ const port = 3000;
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-const Workout = require('./models/workout');
-const Exercise = require('./models/exercise');
-const Set = require('./models/set')
-const catchAsync = require('./utils/catchAsync');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 const ExpressError = require('./utils/ExpressError');
-const workout = require('./models/workout');
-const { workoutSchema } = require('./schemas');
-const workouts = require('./routes/workouts');
-const exercises = require('./routes/exercises');
+const workoutRoutes = require('./routes/workouts');
+const exerciseRoutes = require('./routes/exercises');
+const setRoutes = require('./routes/sets');
 const session = require('express-session');
 const flash = require('connect-flash');
+const userRoutes = require('./routes/users');
 
 mongoose.connect('mongodb://localhost:27017/lift');
 
@@ -31,7 +30,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(methodOverride('_method'));
 const sessionConfig = {
     secret: 'thisshouldbeabettersecret!',
@@ -45,15 +46,24 @@ const sessionConfig = {
 }
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
+    res.locals.signedInUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
 })
 
-app.use('/workouts', workouts);
-app.use('/workouts/:id/exercises', exercises);
+app.use('/', userRoutes);
+app.use('/workouts', workoutRoutes);
+app.use('/workouts/:id/exercises', exerciseRoutes);
+app.use('/workouts/:id/exercises/:exerciseId/sets', setRoutes);
 
 app.get('/', (req, res) => {
     res.render('home');
@@ -64,9 +74,13 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-    const { statusCode = 500 } = err;
+    const {
+        statusCode = 500
+    } = err;
     if (!err.message) err.message = 'Oh no, something went wrong!';
-    res.status(statusCode).render('error', { err });
+    res.status(statusCode).render('error', {
+        err
+    });
 })
 
 app.listen(port, () => {

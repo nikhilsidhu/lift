@@ -17,6 +17,12 @@ nav.navbar {
     background-color: #01244a;
 }
 
+.navbar span {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
 form>input {
     color: #E0FBFC;
     background: rgba(0, 0, 0, 0);
@@ -232,9 +238,6 @@ tr.addsetcollapse:hover {
     color: #E0FBFC;
 }
 
-
-
-
 .nav {
     background-color: #050608;
 }
@@ -262,9 +265,6 @@ tr.addsetcollapse:hover {
     padding: 0;
 }
 
-
-
-
 a.btn,
 button.btn {
     color: #98c1d9e7;
@@ -284,8 +284,6 @@ button.btn {
 .btn:hover {
     color: #E0FBFC;
 }
-
-
 
 p.svg>svg {
     vertical-align: text-bottom;

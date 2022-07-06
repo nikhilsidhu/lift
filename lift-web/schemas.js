@@ -19,4 +19,3 @@ module.exports.setSchema = Joi.object({
         repsCompleted: Joi.number().required().min(0)
     }).required()
 })
-
