@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Exercise = require('./exercise');
+const User = require('./user');
 
 const WorkoutSchema = new Schema({
   // Name of workout
@@ -30,14 +31,10 @@ const WorkoutSchema = new Schema({
   }
 });
 
-WorkoutSchema.post('findOneAndDelete', async function (doc) {
-  if (doc) {
-    await Exercise.deleteMany({
-      _id: {
-        $in: doc.exercises
-      }
-    })
-  }
+WorkoutSchema.post('findOneAndDelete', async function(doc) {
+	if (doc) {
+    	await Exercise.deleteMany({ _id: { $in: doc.exercises }});
+	}
 })
 
 module.exports = mongoose.model('Workout', WorkoutSchema);

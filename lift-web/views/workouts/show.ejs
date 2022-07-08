@@ -1,6 +1,5 @@
 <% layout('layouts/boilerplate') %>
 
-<!-- Workout heading -->
 <div class="row">
   <div class="col-1 mt-3">
 
@@ -16,7 +15,7 @@
 
   <div class="col-10">
 
-    <!-- Workout entry header -->
+    <!-- Workout entry heading -->
     <div class="card workout-header">
       <div class="card-body">
 
@@ -28,32 +27,31 @@
           <button id="editWorkoutNameButton" type="submit"></button>
         </form>
 
-        <!-- workout date -->
+        <!-- Workout date -->
         <h6 class="text-center card-subtitle text-light">
           <%= temporalDate(workout.date).isoMonth%>/<%= temporalDate(workout.date).isoDay%>/<%= temporalDate(workout.date).isoYear%>
         </h6>
-
-        <!-- Buttons -->
-
-        <!-- Delete workout button -->
-
       </div>
     </div>
   </div>
   <div class="col-1"></div>
 </div>
 
-<!-- Add exercise input -->
-<div class="row mb-3">
-  <div class="col-10 offset-1 text-left d-flex justify-content-between align-items-center">
-    <button id="addExerciseCollapse" class="btn btn-border btn-sm my-3" type="button" data-bs-toggle="collapse"
+<!-- Buttons -->
+<div class="row my-3">
+  <div class="col-10 offset-1 text-left d-flex align-items-center">
+    
+    <!-- Add exercise button -->
+    <button id="addExerciseCollapse" class="btn btn-border btn-sm me-3" type="button" data-bs-toggle="collapse"
       data-bs-target="#exerciseForm" aria-expanded="false" aria-controls="collapseExerciseForm">
       + Add Exercise
     </button>
 
+    <!-- Add notes button -->
+    <button class="btn btn-border btn-sm">+ Add Notes</button>
 
-
-    <form class="d-inline-block" action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
+    <!-- Delete workout button -->
+    <form class="d-inline-block ms-auto" action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
       <button class="btn">
         <svg id="backbutton" class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
           class="bi bi-trash" viewBox="0 0 16 16">
@@ -64,12 +62,7 @@
         </svg>
       </button>
     </form>
-
-
-
   </div>
-
-
 </div>
 
 <div class="row justify-content-center">
@@ -96,21 +89,19 @@
 <!-- Exercise list -->
 
 <% let x = 1; %>
-<% let theExercise %>
 
 <% for (let exercise of workout.exercises) { %>
-
-<% theExercise = exercise %>
 
 <!-- Exercise item -->
 <div class="row justify-content-center">
   <div class="col-10 p-0">
     <div class="card exercise-item border-0">
 
-      <!-- Exercise item collapse -->
+      <!-- Set table collapse -->
       <div class="exercise-header card-header d-flex align-items-center buttonouter" data-bs-toggle="collapse"
-        data-bs-target="#collapseExerciseItem<%=x%>" aria-expanded="false" aria-controls="collapseExerciseItem<%= x %>">
+        data-bs-target="#collapseExerciseItem<%=x%>" aria-expanded="false" aria-controls="collapseExerciseItem<%=x%>">
         <h5 class="mb-0"><%=exercise.name%></h6>
+
           <!-- Delete exercise button -->
           <div class="ms-auto h-100">
             <form class="buttonoverlap"
@@ -128,18 +119,19 @@
           </div>
       </div>
 
-      <!-- Sets header -->
-      <% if (exercise.sets) { %>
+      <!-- Sets -->
+      <% console.log('THIS EXERCISE: ', exercise) %>
+      <% if (exercise.sets.length) { %>
 
       <!-- Show sets table on load -->
-      <div id="collapseExerciseItem<%=x%>" class="collapse show" aria-labelledby="">
+      <div class="collapse show" id="collapseExerciseItem<%=x%>">
 
-        <% } else { %>
+      <% } else { %>
 
         <!-- Hide sets table on load  -->
-        <div id="collapseExerciseItem<%=x%>" class="collapse" aria-labelledby="">
+      <div class="collapse" id="collapseExerciseItem<%=x%>">
 
-          <% } %>
+      <% } %>
 
           <!-- Sets table -->
           <table class="table mb-0 p-0">
@@ -200,7 +192,7 @@
               <tr class="addsetcollapse">
                 <td class="addsetcollapse text-center background-color" colspan="4">
                   <button id="addsetcollapse" class="btn btn-sm my-2" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseSetForm<%= x %>" aria-expanded="false" aria-controls="collapseSetForm">
+                    data-bs-target="#collapseSetForm<%= x %>" aria-expanded="false" aria-controls="collapseSetForm<%= x %>">
                     <p class="svg">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -216,7 +208,7 @@
 
               <% let obj = JSON.stringify(exercise) %>
               <!-- Add set form -->
-              <tr id="collapseSetForm<%= x %>" class="collapse">
+              <tr class="collapse" id="collapseSetForm<%= x %>" >
                 <form id="setForm" class="text-center"
                   action="/workouts/<%=workout._id%>/exercises/<%= exercise._id %>/sets" method="POST"
                   data-obj="<%= obj %>">
@@ -244,13 +236,10 @@
               </tr>
             </tbody>
           </table>
-        </div>
       </div>
     </div>
   </div>
-  <% x++; %>
-  <% } %>
+</div>
 
-  <script>
-
-  </script>
+<% x++; %>
+<% } %>

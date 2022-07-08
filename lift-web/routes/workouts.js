@@ -1,21 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
 const temporalDate = require('../utils/temporalDate.js');
 const Workout = require('../models/workout');
 const User = require('../models/user');
-const { workoutSchema } = require('../schemas');
-const { isLoggedIn } = require('../middleware');
-const validateWorkout = (req, res, next) => {
-    const { error } = workoutSchema.validate(req.body)
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',');
-        throw new ExpressError(msg, 400);
-    } else {
-        next();
-    }
-}
+const { isLoggedIn, isOwner, validateWorkout } = require('../middleware');
 
 router.get('/', isLoggedIn, catchAsync(async (req, res) => {
     const currentUser = await User.findById(req.user._id).populate('workouts');
@@ -38,7 +27,7 @@ router.get('/new', isLoggedIn, (req, res) => {
     res.render('workouts/new');
 })
 
-router.get('/:id', isLoggedIn, catchAsync(async (req, res) => {
+router.get('/:id', isLoggedIn, isOwner, catchAsync(async (req, res) => {
     const workout = await Workout.findById(req.params.id)
         .populate({
             path: 'exercises',
@@ -48,11 +37,6 @@ router.get('/:id', isLoggedIn, catchAsync(async (req, res) => {
                 model: 'Set'
             }
     })
-    console.log('WORKOUT: ', workout);
-    if (!workout) {
-        req.flash('error', 'Cannot find workout.');
-        return res.redirect('/workouts');
-    }
     res.render('workouts/show', { workout, temporalDate });
 }))
 
@@ -70,6 +54,7 @@ router.put('/:id', isLoggedIn, validateWorkout, catchAsync(async (req, res) => {
 
 router.delete('/:id', isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
+    await User.findByIdAndUpdate(req.user._id, { $pull: { workouts: id}});
     await Workout.findByIdAndDelete(id);
     req.flash('success', 'Successfully deleted workout.');
     res.redirect('/workouts');

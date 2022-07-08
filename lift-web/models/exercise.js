@@ -12,7 +12,11 @@ const ExerciseSchema = new Schema({
   sets: [{
     type: Schema.Types.ObjectId,
     ref: 'Set'
-  }]
+  }],
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 ExerciseSchema.post('findOneAndDelete', async function (doc) {

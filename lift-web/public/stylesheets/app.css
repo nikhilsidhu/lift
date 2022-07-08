@@ -5,7 +5,6 @@ html {
 
 body {
     color: #E0FBFC;
-
     height: auto;
     background: linear-gradient(#0a499b, #050608) fixed;
     background-repeat: no-repeat;
@@ -23,7 +22,7 @@ nav.navbar {
     margin-right: 10px;
 }
 
-form>input {
+form input {
     color: #E0FBFC;
     background: rgba(0, 0, 0, 0);
 }
@@ -32,13 +31,27 @@ input:focus {
     outline: none;
 }
 
+*:focus {
+    outline: none;
+}
+
+input.input-light {
+    background-color: #0e53aec0;
+    border-color: rgb(0, 24, 79);
+    color: #E0FBFC;
+}
+
+input.input-light:focus {
+    background-color: #0e53aec0;
+    color: #E0FBFC;
+}
+
 .editableInput {
     color: #E0FBFC;
     border: none;
     width: 50px;
     text-align: center;
     background: rgba(0, 0, 0, 0);
-
 }
 
 .buttonouter * {
@@ -59,7 +72,7 @@ input:focus {
 }
 
 .card:hover {
-    border: 1px solid #e0fbfc31;
+    border: 2px solid #e0fbfc31;
 }
 
 table.table {
@@ -243,7 +256,7 @@ tr.addsetcollapse:hover {
 }
 
 .exercise-header {
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.096);
+    box-shadow: 3px 2px 2px 1px rgba(0, 0, 0, 0.142);
 }
 
 .exercise-header:hover {
@@ -291,7 +304,6 @@ p.svg>svg {
 
 p.svg:hover {
     border: none;
-
 }
 
 .workout-input {
