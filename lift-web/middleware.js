@@ -3,7 +3,6 @@ const { workoutSchema } = require('./schemas');
 const ExpressError = require('./utils/ExpressError');
 const Workout = require('./models/workout');
 const Exercise = require('./models/exercise');
-const Set = require('./models/set');
 
 const isValidId = id => mongoose.Types.ObjectId.isValid(id);
 
@@ -31,7 +30,7 @@ module.exports.isOwner = async (req, res, next) => {
     const { id } = req.params;
     const isValidWorkoutId = isValidId(id);
     const workout = await Workout.findById(id);
-
+    
     if (!isValidWorkoutId || !workout) {
         req.flash('error', 'This workout does not exist.');
         return res.redirect('/workouts');
@@ -43,11 +42,11 @@ module.exports.isOwner = async (req, res, next) => {
     }
 
     const { exerciseId } = req.params;
-    const exercise = null;
 
     if (exerciseId && isValidId(exerciseId)) {        
         
-            exercise = Exercise.findById(exerciseId);
+            const exercise = await Exercise.findById(exerciseId);
+
             if (!exercise) {
                 req.flash('error', 'This exercise does not exist.');
                 return res.redirect('/workouts');
