@@ -38,6 +38,6 @@ module.exports.logOut = (req, res, next) => {
             return (next(error));
         }
         req.flash('success', 'Successfully logged out!');
-        res.redirect('/workouts');
+        res.redirect('/');
     });
 }
