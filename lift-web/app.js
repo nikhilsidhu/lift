@@ -7,13 +7,13 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-const ExpressError = require('./utils/ExpressError');
 const workoutRoutes = require('./routes/workouts');
 const exerciseRoutes = require('./routes/exercises');
+const userRoutes = require('./routes/users');
 const setRoutes = require('./routes/sets');
+const ExpressError = require('./utils/ExpressError');
 const session = require('express-session');
 const flash = require('connect-flash');
-const userRoutes = require('./routes/users');
 
 mongoose.connect('mongodb://localhost:27017/lift');
 

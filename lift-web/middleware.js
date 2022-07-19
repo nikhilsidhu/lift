@@ -15,9 +15,10 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
-
 module.exports.validateWorkout = (req, res, next) => {
-    const { error } = workoutSchema.validate(req.body)
+    const {
+        error
+    } = workoutSchema.validate(req.body)
     if (error) {
         const msg = error.details.map(el => el.message).join(',');
         throw new ExpressError(msg, 400);
@@ -27,10 +28,12 @@ module.exports.validateWorkout = (req, res, next) => {
 }
 
 module.exports.isOwner = async (req, res, next) => {
-    const { id } = req.params;
+    const {
+        id
+    } = req.params;
     const isValidWorkoutId = isValidId(id);
     const workout = await Workout.findById(id);
-    
+
     if (!isValidWorkoutId || !workout) {
         req.flash('error', 'This workout does not exist.');
         return res.redirect('/workouts');
@@ -43,19 +46,19 @@ module.exports.isOwner = async (req, res, next) => {
 
     const { exerciseId } = req.params;
 
-    if (exerciseId && isValidId(exerciseId)) {        
-        
-            const exercise = await Exercise.findById(exerciseId);
+    if (exerciseId && isValidId(exerciseId)) {
 
-            if (!exercise) {
-                req.flash('error', 'This exercise does not exist.');
-                return res.redirect('/workouts');
-            }
+        const exercise = await Exercise.findById(exerciseId);
 
-            if (!exercise.user.equals(req.user._id)) {
-                req.flash('error', 'You do not have permission.');
-                return res.redirect('/login');
-            }
+        if (!exercise) {
+            req.flash('error', 'This exercise does not exist.');
+            return res.redirect('/workouts');
+        }
+
+        if (!exercise.user.equals(req.user._id)) {
+            req.flash('error', 'You do not have permission.');
+            return res.redirect('/login');
+        }
     }
     next();
 }

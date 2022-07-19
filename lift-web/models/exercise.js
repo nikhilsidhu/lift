@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Set = require('./set');
 
-
 const ExerciseSchema = new Schema({
   name: {
     // Name of exercise
