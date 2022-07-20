@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const engine = require('ejs-mate');
 const app = express();
-const port = 3000;
 const path = require('path');
 const mongoose = require('mongoose');
 const MongoDBStore = require('connect-mongo');
@@ -95,6 +94,7 @@ app.use((err, req, res, next) => {
     });
 })
 
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Listening on Port ${port}.`);
 })
