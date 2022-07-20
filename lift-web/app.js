@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const engine = require('ejs-mate');
 const port = 3000;
@@ -14,8 +15,11 @@ const setRoutes = require('./routes/sets');
 const ExpressError = require('./utils/ExpressError');
 const session = require('express-session');
 const flash = require('connect-flash');
+const MongoDBStore = require('connect-mongo');
 
-mongoose.connect('mongodb://localhost:27017/lift');
+const dbUrl = process.env.DB_URL;
+
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
@@ -34,7 +38,18 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(methodOverride('_method'));
+
+const store = new MongoDBStore({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60
+});
+
+store.on('error', function(error) {
+    console.log('SESSION STORE ERROR', error);
+});
+
 const sessionConfig = {
+    store,
     secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: true,
