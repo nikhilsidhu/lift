@@ -1,0 +1,275 @@
+<% layout('layouts/boilerplate') %>
+
+  <div class="row">
+    <div class="col-1 mt-3">
+
+      <!-- Back button -->
+      <a href="/workouts">
+        <svg id="backbutton" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="col-10">
+
+      <!-- Workout entry heading -->
+      <div class="card--no-border">
+        <div class="card-body">
+
+          <!-- Edit workout name input -->
+          <form class="mb-1 d-flex justify-content-center needs-validation"
+            action="/workouts/<%=workout._id%>?_method=PUT" method="POST" novalidate>
+            <input class="workout-heading__title text-center d-block justify-content-center mb-1"
+              id="editWorkoutNameInput" type="text" name="workout[name]" value="<%= workout.name %>" required>
+            <button class="d-none" type="submit"></button>
+          </form>
+
+          <!-- Workout date -->
+          <h6 class="text-center card-subtitle text-light">
+            <%= temporalDate(workout.date).isoMonth%>/<%= temporalDate(workout.date).isoDay%>/<%=
+                  temporalDate(workout.date).isoYear%>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="row my-3">
+    <div class="col-10 offset-1 text-left d-flex align-items-center">
+
+      <!-- Add exercise button -->
+      <button class="btn btn-border btn-sm me-3 btn--border" type="button" data-bs-toggle="collapse"
+        data-bs-target="#exerciseForm" aria-expanded="false" aria-controls="collapseExerciseForm">
+        + Add Exercise
+      </button>
+
+      <!-- Add notes button -->
+      <button class="btn btn-border btn-sm btn--border">+ Add Notes</button>
+
+      <!-- Delete workout button -->
+      <form class="d-inline-block ms-auto" action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
+        <button class="btn btn--svg">
+          <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash"
+            viewBox="0 0 16 16">
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+            <path fill-rule="evenodd"
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add exercise form -->
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <form class="collapse" id="exerciseForm" action="/workouts/<%=workout._id%>/exercises" method="POST">
+        <div class="input-group mb-3">
+          <input class="form-control input--text" type="text" name="exercise[name]" placeholder="Exercise name">
+          <div class="input-group-append">
+            <button class="btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-circle"
+                viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Exercise list -->
+
+<% let x=1; %>
+
+<% for (let exercise of workout.exercises) { %>
+
+<!-- Exercise item -->
+<div class="row justify-content-center">
+  <div class="col-1"></div>
+  <div class="col-10 border-0 position-relative">
+
+    <!-- Set table collapse -->
+    <div class="card--shadow card-header position-relative d-flex align-items-center justify-content-between buttonouter" data-bs-toggle="collapse"
+      data-bs-target="#collapseExerciseItem<%=x%>" aria-expanded="false"
+      aria-controls="collapseExerciseItem<%=x%>">
+      <!-- <h5 class="mb-0"><%=exercise.name%></h6> -->
+
+
+      <!-- Exercise name / input -->
+      <form class="mb-1 w-100 needs-validation"
+        action="/workouts/<%=workout._id%>/exercises/<%=exercise._id%>?_method=PUT" method="POST" novalidate>
+        <input class="input input--no-border input--bg-transparent mb-1 w-75" type="text" name="exercise[name]" value="<%= exercise.name %>" required>
+        <button class="d-none" type="submit"></button>
+      </form>
+
+          <!-- Delete exercise button -->
+          <!-- <div class="ms-auto h-100 position-relative"> -->
+
+      <!-- <form class="position-absolute end-0"
+        action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
+        <button class="btn btn--svg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash"
+            viewBox="0 0 16 16">
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+            <path fill-rule="evenodd"
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+          </svg>
+        </button>
+      </form> -->
+
+          <!-- </div> -->
+    </div>
+
+
+
+  <!-- Sets -->
+  <% if (exercise.sets.length) { %>
+
+    <!-- Show sets table on load -->
+    <div class="collapse show" id="collapseExerciseItem<%=x%>">
+
+      <% } else { %>
+
+        <!-- Hide sets table on load  -->
+        <div class="collapse" id="collapseExerciseItem<%=x%>">
+
+          <% } %>
+
+            <!-- Sets table -->
+            <table class="table mb-0 p-0">
+              <thead class="table-header">
+
+                <!-- Sets table header -->
+                <tr class="table-header__row">
+                  <th class='text-center w-25 table-header__cell' scope="col">Set</th>
+                  <th class='text-center w-25 table-header__cell' scope="col">lbs</th>
+                  <th class='text-center w-25 table-header__cell' scope="col">Reps</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let y=1; %>
+
+                  <% for (let set of exercise.sets) { %>
+
+                    <!-- List of sets -->
+                    <tr class="buttonouter">
+                      <form
+                        action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>/sets/<%= set._id %>?_method=PUT"
+                        method="POST">
+                        <td class='text-center w-32'>
+                          <%= y %>
+                        </td>
+                        <td class='text-center w-32'>
+                          <input class="input--number--edit" type="number" name="set[weightCompleted]"
+                            value="<%= set.weightCompleted %>">
+                        </td>
+                        <td class='text-center w-32'>
+                          <input class="input--number--edit" type="number" name="set[repsCompleted]"
+                            value="<%= set.repsCompleted %>">
+                        </td>
+                        <button class="d-none" type="submit"></button>
+                      </form>
+
+                      <!-- Delete set -->
+                      <td class="w-4">
+                        <form class="d-inline"
+                          action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>/sets/<%= set._id %>?_method=DELETE"
+                          method="POST">
+                            <button type="submit" class="btn  btn--svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                class="bi bi-x" viewBox="0 0 16 16">
+                                <path
+                                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                              </svg>
+                            </button>
+
+                        </form>
+                      </td>
+                    </tr>
+                    <% y++; %>
+                      <% } %>
+
+                        <!-- Collapse set form button -->
+                        <tr class="addsetcollapse">
+                          <td class="addsetcollapse text-center background-color" colspan="4">
+                            <button id="addsetcollapse" class="btn btn-sm" type="button"
+                              data-bs-toggle="collapse" data-bs-target="#collapseSetForm<%= x %>"
+                              aria-expanded="false" aria-controls="collapseSetForm<%= x %>">
+                              <p class="svg btn--no-border">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                  <path
+                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                                Add Set
+                              </p>
+                            </button>
+                          </td>
+                        </tr>
+
+                        <% let obj=JSON.stringify(exercise) %>
+                          <!-- Add set form -->
+                          <tr class="collapse" id="collapseSetForm<%= x %>">
+                            <form id="setForm" class="text-center"
+                              action="/workouts/<%=workout._id%>/exercises/<%= exercise._id %>/sets"
+                              method="POST" data-obj="<%= obj %>">
+                              <td class='text-center w-25'>
+                                <%= y %>
+                              </td>
+                              <td class='w-30'>
+                                <input id="weightCompleted"
+                                  class="form-control form-control-sm editableSetInput" type="number"
+                                  name="set[weightCompleted]" value="0">
+                              </td>
+                              <td class='w-30'>
+                                <input id="repsCompleted" class="form-control form-control-sm editableSetInput"
+                                  type="number" name="set[repsCompleted]" value="0">
+                              </td>
+
+                              <!-- Submit set button -->
+                              <td class="w-10">
+                                <button class="btn btn--svg" type="submit">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                    class="bi bi-check" viewBox="0 0 16 16">
+                                    <path
+                                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                  </svg>
+                                </button>
+                              </td>
+                            </form>
+                          </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-1">
+      <!-- Delete exercise button -->
+      <form class=""
+      action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
+      <button class="btn btn--svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+        </svg>
+      </button>
+      </form>
+      
+    </div>
+</div>
+
+<% x++; %>
+<% } %>

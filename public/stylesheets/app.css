@@ -1,0 +1,336 @@
+:root {
+  --primary-color: #E0FBFC;
+  --background-color-dark: #01244a;
+  --background-gradient-colors: #0a499b, #050608;
+  --button-color: #e0fbfcad;
+  --hover-color: #E0FBFC;
+  --hover-highlight: rgba(232, 244, 255, 0.848);
+  --button-border-color: #E0FBFC;
+  --button-border-color--highlight: white;
+}
+
+html {
+  height: auto;
+  overflow: hidden;
+}
+
+body {
+  color: var(--primary-color);
+  height: auto;
+  background: linear-gradient(
+    var(--background-gradient-colors))
+    fixed;
+  background-repeat: no-repeat;
+  overflow: auto;
+  overscroll-behavior: none;
+}
+
+
+
+
+
+/*------------------------------*\
+  #NAV
+\*------------------------------*/
+
+.navbar {
+  background-color: var(--background-color-dark);
+}
+
+.navbar__user {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+
+
+
+
+/*------------------------------*\
+  #WORKOUT-HEADING
+\*------------------------------*/
+
+.workout-heading__title {
+  color: var(--primary-color);
+  border: none;
+  font-size: 1.5em;
+  width: 200px;
+  transition: all .2s ease-in-out;
+  background: rgba(0, 0, 0, 0);
+}  
+
+.workout-heading__title:hover {
+  transform: scale(1.1);
+}
+
+.workout-heading__title:focus {
+  transform: scale(1.1);
+}
+
+.card {
+  background-color: transparent;
+}
+
+.card--no-border {
+  border: none;
+}
+
+.card:hover {
+  border: 2px solid #e0fbfc31;
+}
+
+.bi.bi-chevron-compact-left {
+  margin-top: 10px;
+  width: 45px;
+  height: 45px;
+  color: #E0FBFC;
+  transition: all .1s ease-in-out;
+}
+
+.bi.bi-chevron-compact-left:hover {
+  transform: scale(1.2);
+}
+
+
+
+
+
+/*------------------------------*\
+  #EXERCISE-CARDS
+\*------------------------------*/
+
+.card--shadow {
+  box-shadow: 
+    4px 2px 3px rgba(0, 0, 0, 0.142),
+    -4px 2px 3px rgba(0, 0, 0, 0.142);
+  background-color: transparent;
+  transition: all .1s ease-in-out;
+  border-top: 1px solid #98c1d91f;
+}
+
+.card--shadow:hover {
+transform: scale(1.04);
+}
+/*------------------------------*\
+  #BUTTONS
+\*------------------------------*/
+
+.btn {
+  font-size: 0.9rem;;
+  width: 140px;
+  color: var(--button-color);
+}
+
+.btn:focus, .btn:active {
+  box-shadow: none;
+}
+
+.btn--border {
+  border-radius: 20px;
+  border-color: var(--button-border-color);
+}
+
+.btn--border:hover {
+  color: var(--hover-color);
+  border-color: var(--hover-highlight);
+  transition: .2s ease-in-out;
+}
+
+.btn--border:focus {
+  outline: none;
+}
+
+.btn--no-border {
+  color: var(--button-color);
+}
+
+.btn--no-border:hover {
+  color: var(--hover-highlight);
+}
+
+.btn--svg {
+  width: max-content;
+}
+
+
+
+
+
+/*------------------------------*\
+  #INPUT-HELPERS
+\*------------------------------*/
+
+.input {
+  color: var(--primary-color);
+}
+
+.input::placeholder {
+  color: var(--primary-color);
+}
+
+.input--text {
+  width: 50px;
+  margin: auto;
+  color: #E0FBFC;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.input--bg-transparent, .input--bg-transparent:focus {
+  background-color: #00000000;
+  border-color: #719bc7;
+  color: var(--primary-color);
+  outline: none;
+}
+
+.input--no-border {
+  border: none;
+}
+
+.input--text:focus {
+  color: var(--primary-color);
+}
+
+.input--text::placeholder {
+  color: #E0FBFC;
+  background: rgba(0, 0, 0, 0);
+}
+
+.input--number--edit {
+  color: #E0FBFC;
+  border: none;
+  width: 50px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0);
+}
+
+.input--number--edit:hover {
+  transform: scale(1.2);
+}
+
+.editableSetInput {
+  width: 50px;
+  margin: auto;
+  color: #E0FBFC;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  text-align: center;
+}
+
+.editableSetInput:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/*------------------------------*\
+  #TABLE-HELPERS
+\*------------------------------*/
+
+.table {
+  color: var(--primary-color);
+}
+
+/* .table> :not(:first-child) {
+  border-top: 1px solid #98c1d93a;
+} */
+
+td {
+  border-color: #98c1d93a;
+  z-index: 1;
+  vertical-align: middle;
+  border-bottom: 1px solid #98c1d93a;
+  transition: all .2s ease-in-out;
+  overflow: hidden;
+}
+
+.buttonouter {
+  border-top: 1px solid #98c1d91f;
+}
+
+.buttonouter * {
+  z-index: 1;
+}
+
+.buttonoverlap * {
+  z-index: 2;
+  visibility: hidden;
+}
+
+.buttonouter:hover .buttonoverlap * {
+  visibility: visible;
+}
+
+.table-header-row:hover {
+  border: none;
+}
+
+.table-header__cell {
+  border: none;
+}
+
+td.editableSetInput {
+  width: 100px;
+}
+
+#setForm {
+  text-align: center;
+}
+
+.addsetcollapse {
+  background: rgba(0, 0, 0, 0);
+  border-bottom: none;
+}
+
+tr.addsetcollapse:hover {
+  border: none;
+  box-shadow: none;
+}
+
+p.svg>svg {
+  vertical-align: text-bottom;
+}
+
+p.svg:hover {
+  border: none;
+}
+
+
+
+
+
+/*------------------------------*\
+  #SIZING
+\*------------------------------*/
+
+.w-4 {
+  width: 1%;
+}
+
+.w-32 {
+  width: 33%;
+}
+
+
+
+
+
+/*------------------------------*\
+  #FOOTER
+\*------------------------------*/
+
+footer.footer {
+  background-color: #000b17;
+}
