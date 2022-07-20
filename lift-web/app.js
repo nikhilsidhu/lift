@@ -1,9 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const engine = require('ejs-mate');
+const app = express();
 const port = 3000;
 const path = require('path');
 const mongoose = require('mongoose');
+const MongoDBStore = require('connect-mongo');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -15,10 +17,8 @@ const setRoutes = require('./routes/sets');
 const ExpressError = require('./utils/ExpressError');
 const session = require('express-session');
 const flash = require('connect-flash');
-const MongoDBStore = require('connect-mongo');
 
 const dbUrl = process.env.DB_URL;
-
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
@@ -26,8 +26,6 @@ db.on("error", console.error.bind(console, "connection error"));
 db.once("open", () => {
     console.log("Database connected");
 });
-
-const app = express();
 
 app.engine('ejs', engine);
 app.set('views', __dirname + '/views');
@@ -59,6 +57,7 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
+
 app.use(session(sessionConfig));
 app.use(flash());
 app.use(passport.initialize());
@@ -89,9 +88,7 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-    const {
-        statusCode = 500
-    } = err;
+    const { statusCode = 500 } = err;
     if (!err.message) err.message = 'Oh no, something went wrong!';
     res.status(statusCode).render('error', {
         err

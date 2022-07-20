@@ -7,7 +7,7 @@ const { isLoggedIn, isOwner, validateWorkout } = require('../middleware');
 router.post('/', isLoggedIn, isOwner, catchAsync(exercises.createExercise));
 
 router.route('/:exerciseId')
-    .put(isLoggedIn, catchAsync(exercises.editExercise))
+    .put(isLoggedIn, isOwner, catchAsync(exercises.editExercise))
     .delete(isLoggedIn, isOwner, catchAsync(exercises.deleteExercise));
 
 
