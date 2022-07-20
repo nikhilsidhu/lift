@@ -1,42 +1,40 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Exercise = require('./exercise');
+const User = require('./user');
 
-
-// TODO: add workout intensity (rate from 1-5)?
 const WorkoutSchema = new Schema({
+  // Name of workout
   name: {
-    // name workout (default option too)
     type: String,
-    required: true,
+    required: true
   },
+  // Date workout was completed
   date: {
-    // date of workout
     type: Date,
-    required: true,
+    required: true
   },
-
-  exercises: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Exercise'
-    }
-  ]
-
-  /*,
-  workoutTime: {
-    // how long was the whole workout
-    type: Number,
-    required: true,
-  },
-  workoutNote: {
-    // user note about entire workout
-    type: String,
-    required: false,
-  },
-  userId: {
+  // Exercises that were completed
+  exercises: [{
     type: Schema.Types.ObjectId,
-    ref: "User",
-  }, */
+    ref: 'Exercise'
+  }],
+  // User that completed the workout
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  notes: {
+    type: String,
+    required: false
+  }
 });
+
+WorkoutSchema.post('findOneAndDelete', async function(doc) {
+	if (doc) {
+    	await Exercise.deleteMany({ _id: { $in: doc.exercises }});
+	}
+})
 
 module.exports = mongoose.model('Workout', WorkoutSchema);

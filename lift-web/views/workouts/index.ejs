@@ -1,52 +1,58 @@
 <% layout('layouts/boilerplate') %>
 
-<!-- Page Heading -->
-<h1 class="text-light">Workout History</h1>
+	<!-- Page Heading -->
+	<h1 class="text-light">Workout Log</h1>
 
-<!-- Buttons -->
-<div class="my-4">
-    <a class="btn btn-border" href="/workouts/new">+ Add Workout</a>
-</div>
+	<!-- Buttons -->
+	<div class="my-4">
+		<a class="btn btn--border" href="/workouts/new">+ Add Workout</a>
+	</div>
 
-<!-- List of workouts -->
-<% for (let workout of workouts) { %>
-<div class="row justify-content-center">
+	<% let workoutNum = 1; %>
 
-    <!-- Entry title -->
-    <div class="col">
-        <div class="card ">
-            <div class="row buttonouter">
-                <div class="col-9">
-                    <div class="card-body">
-                        <a class="btn text-light stretched-link" href="/workouts/<%=workout._id%>"><%= workout.name %>&nbsp&nbsp&nbsp<%= temporalDate.convertDate(workout.date).isoMonth%>-<%= temporalDate.convertDate(workout.date).isoDay%>-<%= temporalDate.convertDate(workout.date).isoYear%></a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card-body text-end">
+		<!-- List of workouts -->
+		<% for (let workout of workouts) { %>
+			<div class="row">
 
-                        <!-- Edit workout button -->        
-                        <button class="btn d-inline-block">
-                            <a class="buttonoverlap" href="/workouts/<%= workout._id%>/edit">
-                                <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#E0FBFC" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                </svg>
-                            </a>
-                        </button>
+				<!-- Entry title -->
+				<div class="col">
+					<div class="card-header card--shadow p-3" data-bs-toggle="collapse"
+						data-bs-target="#workout-buttons-bs-<%=workoutNum%>" aria-expanded="false"
+						aria-controls="#workout-buttons-bs-<%=workoutNum%>">
+						<h6 class="m-auto">
+							<%= workout.name %> - <%= temporalDate(workout.date).isoMonth%>/<%= temporalDate(workout.date).isoDay%>/<%= temporalDate(workout.date).isoYear%>
+						</h6>
 
-                        <!-- Delete workout button -->
-                        <form class="d-inline-block buttonoverlap" action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
-                            <button class="btn">      
-                                <svg class="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                </svg>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<% } %>
+					</div>
+
+					<!-- Buttons -->
+					<div class="collapse my-3" id="workout-buttons-bs-<%=workoutNum%>">
+						<div class="d-flex justify-content-between">
+							<div>
+								<a class="btn btn--border" href="/workouts/<%=workout._id%>">View</a>
+								<a class="btn btn--border ms-2" href="/workouts/<%= workout._id%>/edit">Edit</a>
+							</div>
+
+							<!-- Delete workout button -->
+							<form action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
+								<div>
+
+									<button class="btn btn--svg p-1">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash"
+											viewBox="0 0 16 16">
+											<path
+												d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+											<path fill-rule="evenodd"
+												d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+										</svg>
+									</button>
+								</div>
+							</form>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<% workoutNum++ %>
+			<% } %>
