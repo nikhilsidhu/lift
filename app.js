@@ -19,7 +19,7 @@ const flash = require('connect-flash');
 
 // const dbUrl = 'mongodb://localhost:27017/lift';
 
-const dbURL = process.env.DB_URL;
+const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
