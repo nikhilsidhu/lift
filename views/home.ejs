@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 
-<body class="d-flex text-white bg-dark">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body class="text-white bg-dark">
+    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
-            <nav class="navbar navbar-expand-sm fixed-top navbar-dark">
+            <nav class="navbar navbar-expand-sm me-4 fixed-top navbar-dark">
                 <div class="container-fluid">
-                    <h3 class="ms-3">Lift</h3>
+                    <h3 class="ms-4">Lift</h3>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -34,18 +34,16 @@
                 </div>
             </nav>
         </header>
-        <main class="px-3 text-center">
+        <main class="cover-container m-auto text-center">
             <h1>Lift</h1>
             <p class="lead">Welcome to Lift! A simple workout logger to track your accomplishments in the gym.</p>
             <% if (currentUser)  { %>
-            <a href="/workouts" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">Start your
-                journey</a>
+            <a href="/workouts" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">Start your journey</a>
             <% } else { %>
-            <a href="/register" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">Start your
-                journey</a>
+            <a href="/register" class="btn btn-lg border-white bg-white">Start your journey</a>
             <% } %>
         </main>
-        <footer class="mt-auto text-white-50">
+        <footer class="mt-auto ms-4 text-white-50">
             <p>&copy; 2020 Lift</p>
         </footer>
     </div>

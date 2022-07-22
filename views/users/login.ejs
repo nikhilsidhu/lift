@@ -1,24 +1,18 @@
 <% layout('layouts/boilerplate')%>
 
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <div class="my-4">
-            <h1>Log In</h1>
+<div class="d-flex flex-column align-items-center">
+    <h1>Log In</h1>
+    <form action="/login" class="w-50 d-block needs-validation" method="POST">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" class="form-control input-light input--bg-dark" name="username" required>
         </div>
-        <div class="my-3">
-            <form action="/login" class="needs-validation" method="POST">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" class="form-control input-light" name="username" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" class="form-control input-light" name="password" required>
-                </div>
-                <button class="btn btn-success my-3">Login</button>
-            </form>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control input-light input--bg-dark" name="password" required>
         </div>
-    </div>
-    <div class="col-1"></div>
+        <button class="btn btn-success my-3">Login</button>
+    </form>
 </div>
+
+
