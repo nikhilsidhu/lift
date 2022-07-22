@@ -1,26 +1,35 @@
 <% layout('layouts/boilerplate') %>
 
-	<!-- Page Heading -->
-	<h1 class="text-light">Workout Log</h1>
+	<div class="row">
+		<div class="col-md-2 col-sm-1 col-1"></div>
+		<div class="col-md-8 col-sm-10 col-10">
+			<!-- Page Heading -->
+			<h1 class="text-light">Workout Log</h1>
 
-	<!-- Buttons -->
-	<div class="my-4">
-		<a class="btn btn--border" href="/workouts/new">+ Add Workout</a>
+			<!-- Buttons -->
+			<div class="my-4">
+				<a class="btn btn--border" href="/workouts/new">+ Add Workout</a>
+			</div>
+		</div>
+		<div class="col-2 col-sm-1 col-1"></div>
 	</div>
 
-	<% let workoutNum = 1; %>
+
+	<% let workoutNum=1; %>
 
 		<!-- List of workouts -->
 		<% for (let workout of workouts) { %>
 			<div class="row">
 
 				<!-- Entry title -->
-				<div class="col">
+				<div class="col-md-2 col-sm-1 col-1"></div>
+				<div class="col-md-8 col-sm-10 col-10">
 					<div class="card-header card--shadow p-3" data-bs-toggle="collapse"
 						data-bs-target="#workout-buttons-bs-<%=workoutNum%>" aria-expanded="false"
 						aria-controls="#workout-buttons-bs-<%=workoutNum%>">
 						<h6 class="m-auto">
-							<%= workout.name %> - <%= temporalDate(workout.date).isoMonth%>/<%= temporalDate(workout.date).isoDay%>/<%= temporalDate(workout.date).isoYear%>
+							<%= workout.name %> - <%= temporalDate(workout.date).isoMonth%>/<%=
+										temporalDate(workout.date).isoDay%>/<%= temporalDate(workout.date).isoYear%>
 						</h6>
 
 					</div>
@@ -38,8 +47,8 @@
 								<div>
 
 									<button class="btn btn--svg p-1">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash"
-											viewBox="0 0 16 16">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red"
+											class="bi bi-trash" viewBox="0 0 16 16">
 											<path
 												d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
 											<path fill-rule="evenodd"
@@ -53,6 +62,7 @@
 
 					</div>
 				</div>
+				<div class="col-md-2 col-sm-1 col-1"></div>
 			</div>
 			<% workoutNum++ %>
-			<% } %>
+				<% } %>

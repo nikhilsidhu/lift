@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
   <div class="row">
-    <div class="col-1 mt-3">
+    <div class="col-sm-2 col-1 g-0 d-flex justify-content-end align-items-center">
 
       <!-- Back button -->
       <a href="/workouts">
@@ -13,7 +13,7 @@
       </a>
     </div>
 
-    <div class="col-10">
+    <div class="col-sm-8 col-10 g-0">
 
       <!-- Workout entry heading -->
       <div class="card--no-border">
@@ -22,7 +22,7 @@
           <!-- Edit workout name input -->
           <form class="mb-1 d-flex justify-content-center needs-validation"
             action="/workouts/<%=workout._id%>?_method=PUT" method="POST" novalidate>
-            <input class="workout-heading__title text-center d-block justify-content-center mb-1"
+            <input class="workout-heading__title text-center d-block justify-content-center mb-1 needs-validation"
               id="editWorkoutNameInput" type="text" name="workout[name]" value="<%= workout.name %>" required>
             <button class="d-none" type="submit"></button>
           </form>
@@ -35,12 +35,13 @@
         </div>
       </div>
     </div>
-    <div class="col-1"></div>
+    <div class="col-sm-2 col-1 g-0"></div>
   </div>
 
   <!-- Buttons -->
   <div class="row my-3">
-    <div class="col-10 offset-1 text-left d-flex align-items-center">
+    <div class="col-sm-2 col-1 g-0"></div>
+    <div class="col-sm-8 col-10 g-0 text-left d-flex align-items-center">
 
       <!-- Add exercise button -->
       <button class="btn btn-border btn-sm me-3 btn--border" type="button" data-bs-toggle="collapse"
@@ -64,16 +65,20 @@
         </button>
       </form>
     </div>
+    <div class="col-sm-2 col-1 g-0"></div>
+
   </div>
+
 
   <!-- Add exercise form -->
   <div class="row justify-content-center">
-    <div class="col-10">
-      <form class="collapse" id="exerciseForm" action="/workouts/<%=workout._id%>/exercises" method="POST">
+    <div class="col-sm-2 col-2"></div>
+    <div class="col-sm-8 col-8">
+      <form class="collapse" id="exerciseForm" action="/workouts/<%=workout._id%>/exercises" method="POST" novalidate>
         <div class="input-group mb-3">
-          <input class="form-control input--text input--bg-transparent" type="text" name="exercise[name]" placeholder="Exercise name">
+          <input class="form-control input--text input--bg-transparent needs-validation" type="text" name="exercise[name]" placeholder="Exercise name" required>
           <div class="input-group-append">
-            <button class="btn">
+            <button class="btn btn--svg">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-circle"
                 viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -85,6 +90,7 @@
         </div>
       </form>
     </div>
+    <div class="col-sm-2 col-2"></div>
   </div>
 
 
@@ -96,8 +102,8 @@
 
 <!-- Exercise item -->
 <div class="row justify-content-center">
-  <div class="col-1"></div>
-  <div class="col-10 border-0 position-relative">
+  <div class="col-sm-2 col-1 g-0"></div>
+  <div class="col-sm-8 col-10 g-0 border-0 position-relative">
 
     <!-- Set table collapse -->
     <div class="card--shadow card-header position-relative d-flex align-items-center justify-content-between buttonouter" data-bs-toggle="collapse"
@@ -256,11 +262,10 @@
             </table>
         </div>
     </div>
-    <div class="col-1">
+    <div class="col-sm-2 col-1 g-0">
       <!-- Delete exercise button -->
-      <form class=""
-      action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
-      <button class="btn btn--svg">
+      <form action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
+      <button class="btn btn--svg mt-2 ms-3 p-0">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
           <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
