@@ -1,6 +1,6 @@
 :root {
   --primary-color: #E0FBFC;
-  --background-color-dark: #01244a;
+  --background-color-dark: #023770;
   --background-gradient-colors: #0a499b, #050608;
   --button-color: #e0fbfcad;
   --hover-color: #E0FBFC;
@@ -183,6 +183,11 @@ transform: scale(1.04);
   border-color: #719bc7;
   color: var(--primary-color);
   outline: none;
+}
+
+.input--bg-dark, .input--bg-dark:focus {
+  background-color: var(--background-color-dark);
+  color: var(--primary-color)
 }
 
 .input--no-border {
