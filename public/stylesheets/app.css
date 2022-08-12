@@ -1,11 +1,11 @@
 :root {
-  --primary-color: #E0FBFC;
+  --primary-color: #e0fbfc;
   --background-color-dark: #023770;
   --background-gradient-colors: #0a499b, #050608;
   --button-color: #e0fbfcad;
-  --hover-color: #E0FBFC;
+  --hover-color: #e0fbfc;
   --hover-highlight: rgba(232, 244, 255, 0.848);
-  --button-border-color: #E0FBFC;
+  --button-border-color: #e0fbfc;
   --button-border-color--highlight: white;
 }
 
@@ -17,9 +17,7 @@ html {
 body {
   color: var(--primary-color);
   height: auto;
-  background: linear-gradient(
-    var(--background-gradient-colors))
-    fixed;
+  background: linear-gradient(var(--background-gradient-colors)) fixed;
   background-repeat: no-repeat;
   overflow: auto;
   overscroll-behavior: none;
@@ -57,9 +55,9 @@ body {
   border: none;
   font-size: 1.5em;
   width: 200px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background: rgba(0, 0, 0, 0);
-}  
+}
 
 .workout-heading__title:hover {
   transform: scale(1.1);
@@ -85,8 +83,8 @@ body {
   margin-top: 10px;
   width: 45px;
   height: 45px;
-  color: #E0FBFC;
-  transition: all .1s ease-in-out;
+  color: #e0fbfc;
+  transition: all 0.1s ease-in-out;
 }
 
 .bi.bi-chevron-compact-left:hover {
@@ -102,28 +100,33 @@ body {
 \*------------------------------*/
 
 .card--shadow {
-  box-shadow: 
-    4px 2px 3px rgba(0, 0, 0, 0.142),
+  box-shadow: 4px 2px 3px rgba(0, 0, 0, 0.142),
     -4px 2px 3px rgba(0, 0, 0, 0.142);
   background-color: transparent;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   border-top: 1px solid #98c1d91f;
 }
 
 .card--shadow:hover {
-transform: scale(1.04);
+  transform: scale(1.04);
 }
+
+
+
+
+
 /*------------------------------*\
   #BUTTONS
 \*------------------------------*/
 
 .btn {
-  font-size: 0.9rem;;
-  width: 140px;
+  font-size: 0.9rem;
+  width: 100px;
   color: var(--button-color);
 }
 
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
   box-shadow: none;
 }
 
@@ -135,7 +138,7 @@ transform: scale(1.04);
 .btn--border:hover {
   color: var(--hover-color);
   border-color: var(--hover-highlight);
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .btn--border:focus {
@@ -173,21 +176,23 @@ transform: scale(1.04);
 .input--text {
   width: 50px;
   margin: auto;
-  color: #E0FBFC;
+  color: #e0fbfc;
   background: rgba(0, 0, 0, 0);
   border: none;
 }
 
-.input--bg-transparent, .input--bg-transparent:focus {
+.input--bg-transparent,
+.input--bg-transparent:focus {
   background-color: #00000000;
   border-color: #719bc7;
   color: var(--primary-color);
   outline: none;
 }
 
-.input--bg-dark, .input--bg-dark:focus {
+.input--bg-dark,
+.input--bg-dark:focus {
   background-color: var(--background-color-dark);
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .input--no-border {
@@ -199,12 +204,12 @@ transform: scale(1.04);
 }
 
 .input--text::placeholder {
-  color: #E0FBFC;
+  color: #e0fbfc;
   background: rgba(0, 0, 0, 0);
 }
 
 .input--number--edit {
-  color: #E0FBFC;
+  color: #e0fbfc;
   border: none;
   width: 50px;
   text-align: center;
@@ -218,7 +223,7 @@ transform: scale(1.04);
 .editableSetInput {
   width: 50px;
   margin: auto;
-  color: #E0FBFC;
+  color: #e0fbfc;
   background: rgba(0, 0, 0, 0);
   border: none;
   text-align: center;
@@ -230,15 +235,19 @@ transform: scale(1.04);
   color: white;
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
+
+
+
+
 
 /*------------------------------*\
   #TABLE-HELPERS
@@ -248,16 +257,12 @@ input[type=number] {
   color: var(--primary-color);
 }
 
-/* .table> :not(:first-child) {
-  border-top: 1px solid #98c1d93a;
-} */
-
 td {
   border-color: #98c1d93a;
   z-index: 1;
   vertical-align: middle;
   border-bottom: 1px solid #98c1d93a;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   overflow: hidden;
 }
 
@@ -304,7 +309,7 @@ tr.addsetcollapse:hover {
   box-shadow: none;
 }
 
-p.svg>svg {
+p.svg > svg {
   vertical-align: text-bottom;
 }
 
@@ -327,6 +332,7 @@ p.svg:hover {
 .w-32 {
   width: 33%;
 }
+
 
 
 
