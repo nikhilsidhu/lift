@@ -1,15 +1,17 @@
 :root {
-  --primary-color: #e0fbfc;
-  --form-bg-color: #094491;
+  --primary-text: #e0fbfc;
+  --bg-form-color: #093b7c;
+  --bg-nav-color: #0d438a;
   --background-color-dark: #023770;
-  --background-gradient-colors: #0a499b, #050608;
-  --placeholder-color: rgba(255, 255, 255, 0.5);
+  --background-gradient-colors: #0a3975, #000000;
+  --placeholder-color: rgba(255, 255, 255, 0.555);
   --button-color: #e0fbfcad;
   --hover-color: #e0fbfc;
   --hover-highlight: rgba(232, 244, 255, 0.848);
   --button-border-color: #e0fbfc;
   --button-border-color--highlight: white;
-  --hover-primary: rgb(83, 193, 226);
+  --hover-blue: rgb(83, 193, 226);
+  --hover-yellow: rgb(255, 255, 167);
 }
 
 html {
@@ -18,7 +20,7 @@ html {
 }
 
 body {
-  color: var(--primary-color);
+  color: var(--primary-text);
   height: auto;
   background: linear-gradient(var(--background-gradient-colors)) fixed;
   background-repeat: no-repeat;
@@ -31,7 +33,7 @@ body {
 \*------------------------------*/
 
 .navbar {
-  background-color: var(--background-color-dark);
+  background-color: var(--bg-nav-color);
 }
 
 .navbar__user {
@@ -41,12 +43,23 @@ body {
   font-weight: bold;
 }
 
+.nav-link {
+  color: var(--primary-text);
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--hover-yellow);
+}
+
 /*------------------------------*\
   #WORKOUT-HEADING
 \*------------------------------*/
 
 .workout-heading__title {
-  color: var(--primary-color);
+  color: var(--primary-text);
   border: none;
   font-size: 1.5em;
   width: 200px;
@@ -110,7 +123,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--form-bg-color);
+  background-color: var(--bg-form-color);
   width: 50%;
   padding: 3rem 1rem;
   border-radius: 12px;
@@ -119,7 +132,9 @@ body {
 
 .form__input--text {
   color: white;
-  background-color: #083f86;
+  background-color: #0b3b7a;
+  border: 1px solid rgba(255, 255, 255, 0.363);
+  transition: all 0.3s ease-in;
 }
 
 .form__input--text:focus {
@@ -133,7 +148,7 @@ body {
 }
 
 .form-control:focus {
-  box-shadow: 0 0 1px 1px white;
+  box-shadow: 0 0 2px 1px var(--hover-yellow);
 }
 
 /*------------------------------*\
@@ -201,11 +216,11 @@ body {
 \*------------------------------*/
 
 .input {
-  color: var(--primary-color);
+  color: var(--primary-text);
 }
 
 .input::placeholder {
-  color: var(--primary-color);
+  color: var(--primary-text);
 }
 
 .input--text {
@@ -220,14 +235,14 @@ body {
 .input--bg-transparent:focus {
   background-color: #00000000;
   border-color: #719bc7;
-  color: var(--primary-color);
+  color: var(--primary-text);
   outline: none;
 }
 
 .input--bg-dark,
 .input--bg-dark:focus {
   background-color: var(--background-color-dark);
-  color: var(--primary-color);
+  color: var(--primary-text);
 }
 
 .input--no-border {
@@ -235,7 +250,7 @@ body {
 }
 
 .input--text:focus {
-  color: var(--primary-color);
+  color: var(--primary-text);
 }
 
 .input--text::placeholder {
@@ -285,7 +300,7 @@ input[type="number"] {
 \*------------------------------*/
 
 .table {
-  color: var(--primary-color);
+  color: var(--primary-text);
 }
 
 td {
