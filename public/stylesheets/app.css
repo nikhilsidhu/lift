@@ -23,10 +23,6 @@ body {
   overscroll-behavior: none;
 }
 
-
-
-
-
 /*------------------------------*\
   #NAV
 \*------------------------------*/
@@ -41,10 +37,6 @@ body {
   margin-right: 10px;
   font-weight: bold;
 }
-
-
-
-
 
 /*------------------------------*\
   #WORKOUT-HEADING
@@ -91,10 +83,6 @@ body {
   transform: scale(1.2);
 }
 
-
-
-
-
 /*------------------------------*\
   #EXERCISE-CARDS
 \*------------------------------*/
@@ -110,10 +98,6 @@ body {
 .card--shadow:hover {
   transform: scale(1.04);
 }
-
-
-
-
 
 /*------------------------------*\
   #BUTTONS
@@ -157,9 +141,13 @@ body {
   width: max-content;
 }
 
-
-
-
+.btn.btn--hero {
+  background-color: transparent;
+  text-decoration: none;
+  background-color: white;
+  font-size: 5rem;
+  color: white;
+}
 
 /*------------------------------*\
   #INPUT-HELPERS
@@ -245,10 +233,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
-
-
-
 /*------------------------------*\
   #TABLE-HELPERS
 \*------------------------------*/
@@ -317,10 +301,6 @@ p.svg:hover {
   border: none;
 }
 
-
-
-
-
 /*------------------------------*\
   #SIZING
 \*------------------------------*/
@@ -332,11 +312,6 @@ p.svg:hover {
 .w-32 {
   width: 33%;
 }
-
-
-
-
-
 
 /*------------------------------*\
   #FOOTER
