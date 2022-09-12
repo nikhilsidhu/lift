@@ -19,7 +19,7 @@ const flash = require("connect-flash");
 
 const dbUrl = "mongodb://localhost:27017/lift";
 
-// const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
@@ -40,17 +40,17 @@ app.use(
 );
 app.use(methodOverride("_method"));
 
-// const store = new MongoDBStore({
-//   mongoUrl: dbUrl,
-//   touchAfter: 24 * 60 * 60,
-// });
+const store = new MongoDBStore({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+});
 
-// store.on("error", function (error) {
-//   console.log("SESSION STORE ERROR", error);
-// });
+store.on("error", function (error) {
+  console.log("SESSION STORE ERROR", error);
+});
 
 const sessionConfig = {
-  // store,
+  store,
   secret: "thisshouldbeabettersecret!",
   resave: false,
   saveUninitialized: true,
