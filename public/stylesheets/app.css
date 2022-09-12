@@ -1,12 +1,15 @@
 :root {
   --primary-color: #e0fbfc;
+  --form-bg-color: #094491;
   --background-color-dark: #023770;
   --background-gradient-colors: #0a499b, #050608;
+  --placeholder-color: rgba(255, 255, 255, 0.5);
   --button-color: #e0fbfcad;
   --hover-color: #e0fbfc;
   --hover-highlight: rgba(232, 244, 255, 0.848);
   --button-border-color: #e0fbfc;
   --button-border-color--highlight: white;
+  --hover-primary: rgb(83, 193, 226);
 }
 
 html {
@@ -100,11 +103,44 @@ body {
 }
 
 /*------------------------------*\
+  #FORMS
+\*------------------------------*/
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--form-bg-color);
+  width: 50%;
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.form__input--text {
+  color: white;
+  background-color: #083f86;
+}
+
+.form__input--text:focus {
+  color: white;
+  background-color: transparent;
+  outline: none;
+}
+
+.form__input--text::placeholder {
+  color: var(--placeholder-color);
+}
+
+.form-control:focus {
+  box-shadow: 0 0 1px 1px white;
+}
+
+/*------------------------------*\
   #BUTTONS
 \*------------------------------*/
 
 .btn {
-  font-size: 0.9rem;
   width: 100px;
   color: var(--button-color);
 }
@@ -141,12 +177,23 @@ body {
   width: max-content;
 }
 
-.btn.btn--hero {
-  background-color: transparent;
-  text-decoration: none;
-  background-color: white;
-  font-size: 5rem;
+.btn--form {
+  width: 100%;
   color: white;
+  border: none;
+  padding: 0.6rem 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.25s ease-in;
+}
+
+.btn--form--success {
+  background-color: rgb(0, 187, 131);
+}
+
+.btn--form--success:hover {
+  background-color: rgba(0, 160, 112, 0.9);
 }
 
 /*------------------------------*\
