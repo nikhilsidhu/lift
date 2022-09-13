@@ -4,11 +4,11 @@
   <div class="col-md-2 col-sm-1 col-1"></div>
   <div class="col-md-8 col-sm-10 col-10">
     <!-- Page Heading -->
-    <h1 class="text-light">Workout Log</h1>
+    <h1 class="text-light mb-5">Workout Log</h1>
 
     <!-- Buttons -->
-    <div class="my-4">
-      <a class="btn btn--border" href="/workouts/new">+ Workout</a>
+    <div class="mb-5">
+      <a class="btn btn--primary" href="/workouts/new">+ Workout</a>
     </div>
   </div>
   <div class="col-2 col-sm-1 col-1"></div>
@@ -23,13 +23,13 @@
   <div class="col-md-2 col-sm-1 col-1"></div>
   <div class="col-md-8 col-sm-10 col-10">
     <div
-      class="card-header card--shadow p-3"
+      class="card card--workout card--shadow"
       data-bs-toggle="collapse"
       data-bs-target="#workout-buttons-bs-<%=workoutNum%>"
       aria-expanded="false"
       aria-controls="#workout-buttons-bs-<%=workoutNum%>"
     >
-      <h6 class="m-auto">
+      <h6 class="m-0">
         <%= workout.name %> - <%= temporalDate(workout.date).isoMonth%>/<%=
         temporalDate(workout.date).isoDay%>/<%=
         temporalDate(workout.date).isoYear%>
