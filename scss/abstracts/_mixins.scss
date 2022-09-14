@@ -1,0 +1,34 @@
+@use "variables" as *;
+
+@mixin devices($breakpoint) {
+  @if $breakpoint == xs {
+    @media only screen and (max-width: $breakpoint-xs) {
+      @content;
+    }
+  }
+  @if $breakpoint == s {
+    @media only screen and (min-width: $breakpoint-s) {
+      @content;
+    }
+  }
+  @if $breakpoint == m {
+    @media only screen and (min-width: $breakpoint-m) {
+      @content;
+    }
+  }
+  @if $breakpoint == l {
+    @media only screen and (min-width: $breakpoint-l) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media only screen and (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+  @if $breakpoint == xxl {
+    @media only screen and (min-width: $breakpoint-xxl) {
+      @content;
+    }
+  }
+}

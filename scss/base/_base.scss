@@ -1,0 +1,14 @@
+html {
+  height: auto;
+  overflow: hidden;
+}
+
+body {
+  color: var(--primary-text);
+  height: auto;
+  background: linear-gradient(var(--background-gradient-colors)) fixed;
+  background-repeat: no-repeat;
+  overflow: auto;
+  overscroll-behavior: none;
+  font-family: "Inter", sans-serif;
+}

@@ -1,0 +1,79 @@
+.input {
+  color: var(--primary-text);
+}
+
+.input::placeholder {
+  color: var(--primary-text);
+}
+
+.input--text {
+  width: 50px;
+  margin: auto;
+  color: #e0fbfc;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.input--bg-transparent,
+.input--bg-transparent:focus {
+  background-color: #00000000;
+  border-color: #719bc7;
+  color: var(--primary-text);
+  outline: none;
+}
+
+.input--bg-dark,
+.input--bg-dark:focus {
+  background-color: var(--background-color-dark);
+  color: var(--primary-text);
+}
+
+.input--no-border {
+  border: none;
+}
+
+.input--text:focus {
+  color: var(--primary-text);
+}
+
+.input--text::placeholder {
+  color: #e0fbfc;
+  background: rgba(0, 0, 0, 0);
+}
+
+.input--number--edit {
+  color: #e0fbfc;
+  border: none;
+  width: 50px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0);
+}
+
+.input--number--edit:hover {
+  transform: scale(1.2);
+}
+
+.editableSetInput {
+  width: 50px;
+  margin: auto;
+  color: #e0fbfc;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  text-align: center;
+}
+
+.editableSetInput:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

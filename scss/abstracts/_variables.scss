@@ -1,0 +1,24 @@
+:root {
+  --primary-text: #e0fbfc;
+  --bg-blue: #093b7c;
+  --bg-nav-color: #0d438a;
+  --btn-primary: #4ab9ab;
+  --btn-secondary: #4ab9ab;
+  --background-color-dark: #023770;
+  --background-gradient-colors: #0a3975, #000000;
+  --placeholder-color: rgba(255, 255, 255, 0.555);
+  --button-color: #e0fbfcad;
+  --hover-color: #e0fbfc;
+  --hover-highlight: rgba(232, 244, 255, 0.848);
+  --button-border-color: #e0fbfc;
+  --button-border-color--highlight: white;
+  --hover-blue: rgb(83, 193, 226);
+  --hover-yellow: rgb(255, 255, 213);
+}
+
+$breakpoint-xs: 500px;
+$breakpoint-s: 500px;
+$breakpoint-m: 700px;
+$breakpoint-l: 900px;
+$breakpoint-xl: 1100px;
+$breakpoint-xxl: 1500px;

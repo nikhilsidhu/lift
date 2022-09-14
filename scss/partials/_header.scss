@@ -1,0 +1,28 @@
+.workout-heading__title {
+  color: var(--primary-text);
+  border: none;
+  font-size: 1.5em;
+  width: 200px;
+  transition: all 0.2s ease-in-out;
+  background: rgba(0, 0, 0, 0);
+}
+
+.workout-heading__title:hover {
+  transform: scale(1.1);
+}
+
+.workout-heading__title:focus {
+  transform: scale(1.1);
+}
+
+.bi.bi-chevron-compact-left {
+  margin-top: 10px;
+  width: 45px;
+  height: 45px;
+  color: #e0fbfc;
+  transition: all 0.1s ease-in-out;
+}
+
+.bi.bi-chevron-compact-left:hover {
+  transform: scale(1.2);
+}

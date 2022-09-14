@@ -18,25 +18,28 @@
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="mb-auto">
         <nav class="navbar navbar-expand-sm me-4 fixed-top navbar-dark">
-          <div class="container-fluid">
-            <h3 class="ms-4">Lift</h3>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-end"
-              id="navbarNav"
-            >
+          <!-- <div class="container-fluid"> -->
+          <h3 class="ms-4">Lift</h3>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarNav"
+          >
+            <div class="nav__menu--left d-flex flex-sm-column">
               <a class="nav-link" href="#">Home</a>
               <a class="nav-link" href="/workouts">Workout Log</a>
+            </div>
+            <div class="nav__menu--right d-flex">
               <% if (!currentUser) { %>
               <a class="nav-link" href="/register">Register</a>
               <a class="nav-link" href="/login">Login</a>
@@ -45,6 +48,7 @@
               <% } %>
             </div>
           </div>
+          <!-- </div> -->
         </nav>
       </header>
       <main class="cover-container m-auto text-center">

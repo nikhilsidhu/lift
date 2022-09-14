@@ -1,0 +1,29 @@
+.card {
+  font-size: 1.2rem;
+  background-color: var(--bg-blue);
+  transition: all 0.25s ease-in;
+  padding: 1.2rem;
+}
+
+.card:hover {
+  cursor: pointer;
+  color: white;
+  transform: scale(1.02);
+  /* box-shadow: 0 0 1px var(--hover-yellow); */
+}
+
+.card--workout {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card--no-border {
+  border: none;
+}
+
+.card--shadow {
+  /* box-shadow: 4px 2px 3px rgba(0, 0, 0, 0.142),
+      -4px 2px 3px rgba(0, 0, 0, 0.142); */
+  box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.142);
+}

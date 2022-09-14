@@ -1,0 +1,21 @@
+.navbar {
+  background-color: var(--bg-nav-color);
+}
+
+.navbar__user {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: var(--primary-text);
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--hover-yellow);
+}

@@ -1,0 +1,63 @@
+.table {
+  color: var(--primary-text);
+}
+
+td {
+  border-color: #98c1d93a;
+  z-index: 1;
+  vertical-align: middle;
+  border-bottom: 1px solid #98c1d93a;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.buttonouter {
+  border-top: 1px solid #98c1d91f;
+}
+
+.buttonouter * {
+  z-index: 1;
+}
+
+.buttonoverlap * {
+  z-index: 2;
+  visibility: hidden;
+}
+
+.buttonouter:hover .buttonoverlap * {
+  visibility: visible;
+}
+
+.table-header-row:hover {
+  border: none;
+}
+
+.table-header__cell {
+  border: none;
+}
+
+td.editableSetInput {
+  width: 100px;
+}
+
+#setForm {
+  text-align: center;
+}
+
+.addsetcollapse {
+  background: rgba(0, 0, 0, 0);
+  border-bottom: none;
+}
+
+tr.addsetcollapse:hover {
+  border: none;
+  box-shadow: none;
+}
+
+p.svg > svg {
+  vertical-align: text-bottom;
+}
+
+p.svg:hover {
+  border: none;
+}
