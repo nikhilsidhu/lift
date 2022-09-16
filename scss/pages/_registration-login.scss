@@ -1,0 +1,13 @@
+@use "../abstracts/mixins" as *;
+
+.form__container {
+  max-width: 500px;
+
+  @include devices(xs) {
+    width: 100%;
+  }
+
+  @include devices(s) {
+    width: 80%;
+  }
+}

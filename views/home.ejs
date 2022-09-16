@@ -11,63 +11,28 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
 
-  <body class="text-white bg-dark">
-    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
-        <nav class="navbar navbar-expand-sm me-4 fixed-top navbar-dark">
-          <!-- <div class="container-fluid"> -->
-          <h3 class="ms-4">Lift</h3>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="collapse navbar-collapse justify-content-between"
-            id="navbarNav"
-          >
-            <div class="nav__menu--left d-flex flex-sm-column">
-              <a class="nav-link" href="#">Home</a>
-              <a class="nav-link" href="/workouts">Workout Log</a>
-            </div>
-            <div class="nav__menu--right d-flex">
-              <% if (!currentUser) { %>
-              <a class="nav-link" href="/register">Register</a>
-              <a class="nav-link" href="/login">Login</a>
-              <% } else { %>
-              <a class="nav-link" href="/logout">Logout</a>
-              <% } %>
-            </div>
-          </div>
-          <!-- </div> -->
-        </nav>
-      </header>
-      <main class="cover-container m-auto text-center">
-        <span class="lead fs-3 fw-bold d-inline-block mb-3"
-          >Welcome to Lift!</span
-        >
-        <p class="lead fs-3 mb-5">
-          A simple workout logger to track your accomplishments in the gym.
-        </p>
-        <% if (currentUser) { %>
-        <a href="/workouts" class="btn--hero">Start your journey</a>
-        <% } else { %>
-        <a href="/register" class="btn--hero">Start your journey</a>
-        <% } %>
-      </main>
-      <footer class="mt-auto ms-4 text-white-50">
-        <p>&copy; 2022 Lift</p>
-      </footer>
-    </div>
+  <body class="hero__image-container text-white bg-dark">
+    <%- partial('./partials/navbar') -%>
+
+    <header class="mb-auto"></header>
+    <main class="hero__text__container m-auto text-center">
+      <span class="hero__text--heading d-inline-block mb-4"
+        >Welcome to Lift!</span
+      >
+      <p class="hero__text--description mb-5">
+        A simple workout logger to track your accomplishments in the gym.
+      </p>
+      <% if (currentUser) { %>
+      <a href="/workouts" class="btn--hero">Start your journey</a>
+      <% } else { %>
+      <a href="/register" class="btn--hero">Start your journey</a>
+      <% } %>
+    </main>
+
+    <%- partial('./partials/footer') -%>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

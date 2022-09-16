@@ -1,14 +1,11 @@
 html {
-  height: auto;
-  overflow: hidden;
+  height: 100%;
 }
 
 body {
-  color: var(--primary-text);
-  height: auto;
+  min-height: 100vh;
   background: linear-gradient(var(--background-gradient-colors)) fixed;
   background-repeat: no-repeat;
-  overflow: auto;
-  overscroll-behavior: none;
-  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
 }

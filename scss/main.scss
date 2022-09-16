@@ -2,14 +2,22 @@
 @use "./abstracts/mixins";
 
 @use "./base/base";
+@use "./base/reset";
 @use "./base/sizing";
+@use "./base/typography";
 
 @use "./components/buttons";
+@use "./components/heading";
 @use "./components/cards";
 @use "./components/forms";
 @use "./components/inputs";
 @use "./components/tables";
+@use "./components/hero";
+@use "./components/logo";
 
 @use "./partials/navigation";
 @use "./partials/header";
 @use "./partials/footer";
+
+@use "./pages/home";
+@use "./pages/registration-login";

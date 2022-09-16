@@ -1,0 +1,48 @@
+.navbar__container {
+  background-color: rgb(83, 193, 226);
+}
+
+.nav-link {
+  padding: 0.25rem 0;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  //   border-bottom: 0.1rem solid transparent;
+}
+
+// .nav-link:hover {
+//   color: rgb(83, 193, 226);
+//   border-bottom-color: rgb(83, 193, 226);
+// }
+
+.nav-link.active {
+  color: white;
+  border-bottom-color: white;
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+  color: rgb(83, 193, 226);
+  text-shadow: none;
+}
+
+.footer {
+  display: flex;
+}
+
+.btn--hero {
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  border: 2px solid rgb(181, 202, 235);
+  border-radius: 30px;
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: all 0.35s ease-in;
+  background-color: rgba(40, 85, 153, 0.5);
+}
+
+.btn--hero:hover {
+  color: white;
+  box-shadow: 0 0 10px 2px rgb(83, 193, 226);
+}
