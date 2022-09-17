@@ -1,0 +1,8 @@
+.link--workout {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--hover-yellow);
+  }
+}

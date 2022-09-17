@@ -1,10 +1,10 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="row">
+<div class="row mt-5">
   <div class="col-md-2 col-sm-1 col-1"></div>
   <div class="col-md-8 col-sm-10 col-10">
     <!-- Page Heading -->
-    <h1 class="heading--main mb-5">Workout Log</h1>
+    <!-- <h1 class="heading--main mb-5">Workout Log</h1> -->
 
     <!-- Buttons -->
     <div class="mb-5">
@@ -22,18 +22,14 @@
   <!-- Entry title -->
   <div class="col-md-2 col-sm-1 col-1"></div>
   <div class="col-md-8 col-sm-10 col-10">
-    <div
-      class="card card--workout card--shadow"
-      data-bs-toggle="collapse"
-      data-bs-target="#workout-buttons-bs-<%=workoutNum%>"
-      aria-expanded="false"
-      aria-controls="#workout-buttons-bs-<%=workoutNum%>"
-    >
-      <h6 class="m-0">
-        <%= workout.name %> - <%= temporalDate(workout.date).isoMonth%>/<%=
-        temporalDate(workout.date).isoDay%>/<%=
-        temporalDate(workout.date).isoYear%>
-      </h6>
+    <div class="card card--workout">
+      <a class="link--workout stretched-link" href="/workouts/<%=workout._id%>">
+        <h6 class="m-0">
+          <%= workout.name %> - <%= temporalDate(workout.date).isoMonth%>/<%=
+          temporalDate(workout.date).isoDay%>/<%=
+          temporalDate(workout.date).isoYear%>
+        </h6>
+      </a>
     </div>
 
     <!-- Buttons -->
@@ -49,7 +45,7 @@
         </div>
 
         <!-- Delete workout button -->
-        <form action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
+        <!-- <form action="/workouts/<%=workout._id%>?_method=DELETE" method="POST">
           <div>
             <button class="btn btn--svg p-1">
               <svg
@@ -70,7 +66,7 @@
               </svg>
             </button>
           </div>
-        </form>
+        </form> -->
       </div>
     </div>
   </div>

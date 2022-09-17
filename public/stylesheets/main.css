@@ -1,11 +1,11 @@
 :root {
   --primary-text: #e0fbfc;
   --bg-blue: #093b7c;
-  --bg-nav-color: #0d438a;
+  --bg-nav-color: #0e3a73;
   --btn-primary: #4ab9ab;
   --btn-secondary: #4ab9ab;
   --background-color-dark: #023770;
-  --background-gradient-colors: #0a3975, #000000;
+  --background-gradient-colors: #083166, #000000;
   --placeholder-color: rgba(255, 255, 255, 0.555);
   --button-color: #e0fbfcad;
   --hover-color: #e0fbfc;
@@ -161,7 +161,7 @@ body {
   box-shadow: none;
 }
 .btn:hover {
-  transform: translateY(-2px);
+  color: var(--hover-yellow);
 }
 .btn--primary {
   background-color: var(--btn-primary);
@@ -173,6 +173,7 @@ body {
   color: white;
 }
 .btn--secondary {
+  text-decoration: none;
   color: var(--btn-secondary);
   background-color: transparent;
   border-radius: 30px;
@@ -182,6 +183,10 @@ body {
 }
 .btn--secondary:hover {
   color: #3fc9b6;
+}
+.btn--secondary-secondary, .btn--secondary-secondary:hover {
+  color: rgb(83, 193, 226);
+  text-shadow: none;
 }
 .btn--form {
   width: 100%;
@@ -218,45 +223,75 @@ body {
 .btn--no-border:hover {
   color: var(--hover-highlight);
 }
-
 .btn--svg {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
+.btn--delete-exercise {
+  right: -25px;
+}
+.btn--delete-exercise:hover {
+  color: rgb(0, 187, 131);
+}
+.btn--hero {
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  border: 2px solid rgb(181, 202, 235);
+  border-radius: 30px;
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: all 0.35s ease-in;
+  background-color: rgba(40, 85, 153, 0.5);
+}
+.btn--hero:hover {
+  color: white;
+  box-shadow: 0 0 10px 2px rgb(83, 193, 226);
+}
+
+.link--workout {
+  color: white;
+  text-decoration: none;
+}
+.link--workout:hover {
+  color: var(--hover-yellow);
+}
 
 .heading--main {
   font-size: 2rem;
 }
-
-.card {
-  font-size: 1.2rem;
-  background-color: var(--bg-blue);
-  transition: all 0.25s ease-in;
-  padding: 1.2rem;
+.heading--form {
+  font-size: 1.5rem;
+}
+.heading__container--workout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.card {
+  font-size: 1.1rem;
+  transition: all 0.25s ease-in;
+  padding: 1rem;
+  border: none;
+  box-shadow: inset 0 0 3px 2px rgba(0, 22, 101, 0.525);
+}
 .card:hover {
   cursor: pointer;
   color: white;
   transform: scale(1.02);
-  /* box-shadow: 0 0 1px var(--hover-yellow); */
 }
-
 .card--workout {
+  background-color: var(--bg-blue);
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  padding: 1.2rem;
 }
-
-.card--no-border {
-  border: none;
-}
-
-.card--shadow {
-  /* box-shadow: 4px 2px 3px rgba(0, 0, 0, 0.142),
-      -4px 2px 3px rgba(0, 0, 0, 0.142); */
-  box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.142);
+.card--exercise {
+  background-color: var(--bg-blue);
 }
 
 .form {
@@ -269,52 +304,39 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
-
 .form__input--text {
   color: white;
   background-color: #0b3b7a;
   border: 1px solid rgba(255, 255, 255, 0.363);
   transition: all 0.3s ease-in;
 }
-
 .form__input--text:focus {
   color: white;
   background-color: transparent;
   outline: none;
 }
-
 .form__input--text::-moz-placeholder {
   color: var(--placeholder-color);
 }
-
 .form__input--text:-ms-input-placeholder {
   color: var(--placeholder-color);
 }
-
 .form__input--text::placeholder {
   color: var(--placeholder-color);
-}
-
-.form-control:focus {
-  box-shadow: 0 0 2px 1px var(--hover-yellow);
 }
 
 .input {
   color: var(--primary-text);
 }
-
 .input::-moz-placeholder {
   color: var(--primary-text);
 }
-
 .input:-ms-input-placeholder {
   color: var(--primary-text);
 }
-
 .input::placeholder {
   color: var(--primary-text);
 }
-
 .input--text {
   width: 50px;
   margin: auto;
@@ -322,44 +344,34 @@ body {
   background: rgba(0, 0, 0, 0);
   border: none;
 }
-
-.input--bg-transparent,
-.input--bg-transparent:focus {
+.input--text:focus {
+  color: var(--primary-text);
+}
+.input--text::-moz-placeholder {
+  color: #e0fbfc;
+  background: rgba(0, 0, 0, 0);
+}
+.input--text:-ms-input-placeholder {
+  color: #e0fbfc;
+  background: rgba(0, 0, 0, 0);
+}
+.input--text::placeholder {
+  color: #e0fbfc;
+  background: rgba(0, 0, 0, 0);
+}
+.input--bg-transparent, .input--bg-transparent:focus {
   background-color: rgba(0, 0, 0, 0);
   border-color: #719bc7;
   color: var(--primary-text);
   outline: none;
 }
-
-.input--bg-dark,
-.input--bg-dark:focus {
+.input--bg-dark, .input--bg-dark:focus {
   background-color: var(--background-color-dark);
   color: var(--primary-text);
 }
-
 .input--no-border {
   border: none;
 }
-
-.input--text:focus {
-  color: var(--primary-text);
-}
-
-.input--text::-moz-placeholder {
-  color: #e0fbfc;
-  background: rgba(0, 0, 0, 0);
-}
-
-.input--text:-ms-input-placeholder {
-  color: #e0fbfc;
-  background: rgba(0, 0, 0, 0);
-}
-
-.input--text::placeholder {
-  color: #e0fbfc;
-  background: rgba(0, 0, 0, 0);
-}
-
 .input--number--edit {
   color: #e0fbfc;
   border: none;
@@ -367,7 +379,6 @@ body {
   text-align: center;
   background: rgba(0, 0, 0, 0);
 }
-
 .input--number--edit:hover {
   transform: scale(1.2);
 }
@@ -380,7 +391,6 @@ body {
   border: none;
   text-align: center;
 }
-
 .editableSetInput:focus {
   outline: none;
   background: rgba(0, 0, 0, 0);
@@ -527,7 +537,6 @@ p.svg:hover {
     font-size: 1.3rem;
   }
 }
-
 .hero__image-container {
   min-height: 100vh;
   width: 100vw;
@@ -548,8 +557,8 @@ p.svg:hover {
 }
 
 .navbar {
-  background-color: transparent;
-  padding: 1.5rem;
+  background-color: var(--bg-nav-color);
+  padding: 0.8rem;
 }
 .navbar-collapse {
   display: flex;
@@ -614,6 +623,9 @@ p.svg:hover {
     border-bottom-color: none;
   }
 }
+.nav-link:active {
+  background-color: white;
+}
 
 .nav-link:hover {
   color: var(--hover-yellow);
@@ -673,38 +685,13 @@ p.svg:hover {
   font-weight: 400;
   color: rgba(255, 255, 255, 0.85);
 }
-
-.nav-link.active {
+.nav-link:active {
   color: white;
   border-bottom-color: white;
 }
 
-.btn-secondary,
-.btn-secondary:hover {
-  color: rgb(83, 193, 226);
-  text-shadow: none;
-}
-
 .footer {
   display: flex;
-}
-
-.btn--hero {
-  display: inline-flex;
-  align-items: center;
-  color: white;
-  border: 2px solid rgb(181, 202, 235);
-  border-radius: 30px;
-  padding: 0.8rem;
-  font-size: 1.4rem;
-  text-decoration: none;
-  transition: all 0.35s ease-in;
-  background-color: rgba(40, 85, 153, 0.5);
-}
-
-.btn--hero:hover {
-  color: white;
-  box-shadow: 0 0 10px 2px rgb(83, 193, 226);
 }
 
 .form__container {

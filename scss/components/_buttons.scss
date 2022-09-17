@@ -10,7 +10,7 @@
   }
 
   &:hover {
-    transform: translateY(-2px);
+    color: var(--hover-yellow);
   }
 
   &--primary {
@@ -18,23 +18,30 @@
     border-radius: 30px;
     font-weight: 600;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.5);
-  }
 
-  &--primary:hover {
-    color: white;
+    &:hover {
+      color: white;
+    }
   }
 
   &--secondary {
+    text-decoration: none;
     color: var(--btn-secondary);
     background-color: transparent;
     border-radius: 30px;
     font-weight: 600;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.5);
     border: 2px solid #3fc9b6;
-  }
 
-  &--secondary:hover {
-    color: #3fc9b6;
+    &:hover {
+      color: #3fc9b6;
+    }
+
+    &-secondary,
+    &-secondary:hover {
+      color: rgb(83, 193, 226);
+      text-shadow: none;
+    }
   }
 
   &--form {
@@ -79,8 +86,34 @@
       color: var(--hover-highlight);
     }
   }
-}
 
-.btn--svg {
-  width: max-content;
+  &--svg {
+    width: max-content;
+  }
+
+  &--delete-exercise {
+    right: -25px;
+
+    &:hover {
+      color: rgb(0, 187, 131);
+    }
+  }
+
+  &--hero {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    border: 2px solid rgb(181, 202, 235);
+    border-radius: 30px;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.35s ease-in;
+    background-color: rgba(40, 85, 153, 0.5);
+
+    &:hover {
+      color: white;
+      box-shadow: 0 0 10px 2px rgb(83, 193, 226);
+    }
+  }
 }

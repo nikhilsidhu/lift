@@ -1,10 +1,10 @@
+<!-- Insert boilerplate -->
 <% layout('layouts/boilerplate') %>
 
-<div class="row">
-  <div
-    class="col-sm-2 col-1 g-0 d-flex justify-content-center align-items-center"
-  >
-    <!-- Back button -->
+<div class="row my-5">
+  <div class="col-sm-2 col-1 g-0 d-flex justify-content-center align-items-center">
+
+    <!-- Back to workout log -->
     <a href="/workouts">
       <svg
         id="backbutton"
@@ -24,41 +24,24 @@
   </div>
 
   <div class="col-sm-8 col-10 g-0">
-    <!-- Workout entry heading -->
-    <div class="card--no-border">
-      <div class="card-body">
-        <!-- Edit workout name input -->
-        <form
-          class="mb-1 d-flex justify-content-center needs-validation"
-          action="/workouts/<%=workout._id%>?_method=PUT"
-          method="POST"
-          novalidate
-        >
-          <input
-            class="workout-heading__title text-center d-block justify-content-center mb-1 needs-validation"
-            id="editWorkoutNameInput"
-            type="text"
-            name="workout[name]"
-            value="<%= workout.name %>"
-            required
-          />
-          <button class="d-none" type="submit"></button>
-        </form>
+    <div class="heading__container--workout">
 
-        <!-- Workout date -->
-        <h6 class="text-center card-subtitle text-light">
-          <%= temporalDate(workout.date).isoMonth%>/<%=
-          temporalDate(workout.date).isoDay%>/<%=
-          temporalDate(workout.date).isoYear%>
-        </h6>
-      </div>
+      <!-- Workout heading -->
+      <h1 class="heading--main mb-3"><%= workout.name %></h1>
+
+      <!-- Workout date -->
+      <h2 class="text-center card-subtitle text-light">
+        <%= temporalDate(workout.date).isoMonth%>/<%=
+        temporalDate(workout.date).isoDay%>/<%=
+        temporalDate(workout.date).isoYear%>
+      </h6>
     </div>
   </div>
   <div class="col-sm-2 col-1 g-0"></div>
 </div>
 
 <!-- Buttons -->
-<div class="row my-3">
+<div class="row mb-5">
   <div class="col-sm-2 col-1 g-0"></div>
   <div class="col-sm-8 col-10 g-0 text-left d-flex align-items-center">
     <!-- Add exercise button -->
@@ -72,10 +55,9 @@
     >
       + Exercise
     </button>
-    <button class="btn btn--secondary">Edit</button>
-
-    <!-- Add notes button -->
-    <!-- <button class="btn btn-border btn-sm btn--border">+ Notes</button> -->
+    <a class="btn btn--secondary" href="/workouts/<%= workout._id%>/edit"
+      >Edit</a
+    >
 
     <!-- Delete workout button -->
     <form
@@ -89,7 +71,7 @@
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
-          fill="red"
+          fill="white"
           class="bi bi-trash"
           viewBox="0 0 16 16"
         >
@@ -151,9 +133,12 @@
   <div class="col-sm-2 col-2"></div>
 </div>
 
-<!-- Exercise list -->
 
-<% let x=1; %> <% for (let exercise of workout.exercises) { %>
+<!-- List of exercises -->
+
+<!-- Counter for number exercises-->
+<% let x=1; %>
+<% for (let exercise of workout.exercises) { %>
 
 <!-- Exercise item -->
 <div class="row justify-content-center">
@@ -161,23 +146,22 @@
   <div class="col-sm-8 col-10 g-0 border-0 position-relative">
     <!-- Set table collapse -->
     <div
-      class="card--shadow card-header position-relative d-flex align-items-center justify-content-between buttonouter"
+      class="card card--exercise position-relative d-flex buttonouter"
       data-bs-toggle="collapse"
       data-bs-target="#collapseExerciseItem<%=x%>"
       aria-expanded="false"
       aria-controls="collapseExerciseItem<%=x%>"
     >
-      <!-- <h5 class="mb-0"><%=exercise.name%></h6> -->
 
       <!-- Exercise name / input -->
       <form
-        class="mb-1 w-100 needs-validation"
+        class="d-inline-block needs-validation"
         action="/workouts/<%=workout._id%>/exercises/<%=exercise._id%>?_method=PUT"
         method="POST"
         novalidate
       >
         <input
-          class="input input--no-border input--bg-transparent mb-1 w-75"
+          class="input--no-border input--bg-transparent w-50"
           type="text"
           name="exercise[name]"
           value="<%= exercise.name %>"
@@ -185,27 +169,31 @@
         />
         <button class="d-none" type="submit"></button>
       </form>
-
-      <!-- Delete exercise button -->
-      <!-- <div class="ms-auto h-100 position-relative"> -->
-
-      <!-- <form class="position-absolute end-0"
-        action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
-        <button class="btn btn--svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash"
-            viewBox="0 0 16 16">
+      <form class="d-inline-block position-absolute btn--delete-exercise"
+        action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE"
+        method="POST"
+      >
+        <button class="d-flex align-items-center btn btn--svg p-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="#bdbdbd"
+            class="bi bi-dash-circle"
+            viewBox="0 0 16 16"
+          >
             <path
-              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-            <path fill-rule="evenodd"
-              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+            />
+            <path
+              d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
+            />
           </svg>
         </button>
-      </form> -->
-
-      <!-- </div> -->
+      </form>
     </div>
 
-    <!-- Sets -->
+    <!-- Show sets if there are any -->
     <% if (exercise.sets.length) { %>
 
     <!-- Show sets table on load -->
@@ -217,7 +205,7 @@
         <% } %>
 
         <!-- Sets table -->
-        <table class="table mb-0 p-0">
+        <table class="table mt-3 p-0">
           <thead class="table-header">
             <!-- Sets table header -->
             <tr class="table-header__row">
@@ -233,6 +221,8 @@
             </tr>
           </thead>
           <tbody>
+
+            <!-- Counter for number of sets -->
             <% let y=1; %> <% for (let set of exercise.sets) { %>
 
             <!-- List of sets -->
@@ -261,7 +251,7 @@
                 <button class="d-none" type="submit"></button>
               </form>
 
-              <!-- Delete set -->
+              <!-- Delete set button-->
               <td class="w-4">
                 <form
                   class="d-inline"
@@ -285,7 +275,9 @@
                 </form>
               </td>
             </tr>
-            <% y++; %> <% } %>
+
+            <% y++; %> 
+            <% } %>
 
             <!-- Collapse set form button -->
             <tr class="addsetcollapse">
@@ -325,6 +317,7 @@
             </tr>
 
             <% let obj=JSON.stringify(exercise) %>
+
             <!-- Add set form -->
             <tr class="collapse" id="collapseSetForm<%= x %>">
               <form
@@ -378,31 +371,9 @@
       </div>
     </div>
     <div class="col-sm-2 col-1 g-0">
-      <!-- Delete exercise button -->
-      <form
-        action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE"
-        method="POST"
-      >
-        <button class="btn btn--svg mt-2 ms-3 p-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-dash-circle"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-            />
-            <path
-              d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
-            />
-          </svg>
-        </button>
-      </form>
     </div>
   </div>
 
-  <% x++; %> <% } %>
+  <% x++; %>
+  <% } %>
 </div>

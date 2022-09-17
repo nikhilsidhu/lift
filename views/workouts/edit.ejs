@@ -1,9 +1,9 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="row">
-  <div class="col my-3">
+<div class="row my-5">
+  <div class="col-sm-2 col-1 g-0 d-flex justify-content-center align-items-center">
     <!-- Back button -->
-    <a href="/workouts">
+    <a href="/workouts/<%=workout._id%>"">
       <svg
         id="backbutton"
         xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
   </div>
 
   <div class="col-8 d-flex justify-content-center align-items-center">
-    <h1>Edit Workout</h1>
+    <h1 class="heading--main">Edit Workout</h1>
   </div>
   <div class="col"></div>
 </div>

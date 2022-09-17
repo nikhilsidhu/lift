@@ -7,25 +7,21 @@
   padding: 3rem 1rem;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-}
 
-.form__input--text {
-  color: white;
-  background-color: #0b3b7a;
-  border: 1px solid rgba(255, 255, 255, 0.363);
-  transition: all 0.3s ease-in;
-}
+  &__input--text {
+    color: white;
+    background-color: #0b3b7a;
+    border: 1px solid rgba(255, 255, 255, 0.363);
+    transition: all 0.3s ease-in;
 
-.form__input--text:focus {
-  color: white;
-  background-color: transparent;
-  outline: none;
-}
+    &:focus {
+      color: white;
+      background-color: transparent;
+      outline: none;
+    }
 
-.form__input--text::placeholder {
-  color: var(--placeholder-color);
-}
-
-.form-control:focus {
-  box-shadow: 0 0 2px 1px var(--hover-yellow);
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+  }
 }

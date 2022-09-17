@@ -1,10 +1,10 @@
 @use "../abstracts/mixins" as *;
 
 .navbar {
-  background-color: transparent;
+  // background-color: transparent;
 
-  // background-color: var(--bg-nav-color);
-  padding: 1.5rem;
+  background-color: var(--bg-nav-color);
+  padding: 0.8rem;
 
   @include devices(768px) {
     // background-color: rgba(0, 0, 0, 0.803);
@@ -70,6 +70,10 @@
       background-color: rgba(0, 0, 0, 0.6);
       border-bottom-color: none;
     }
+  }
+
+  &:active {
+    background-color: white;
   }
 }
 
