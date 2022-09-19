@@ -1,27 +1,21 @@
+@use "../abstracts/mixins" as *;
+
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--bg-blue);
-  width: 50%;
-  padding: 3rem 1rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  max-width: 600px;
+  width: 100%;
 
-  &__input--text {
-    color: white;
-    background-color: #0b3b7a;
-    border: 1px solid rgba(255, 255, 255, 0.363);
-    transition: all 0.3s ease-in;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    background-color: var(--bg-blue);
+  }
 
-    &:focus {
-      color: white;
-      background-color: transparent;
-      outline: none;
-    }
-
-    &::placeholder {
-      color: var(--placeholder-color);
-    }
+  &::placeholder {
+    color: var(--placeholder-color);
   }
 }

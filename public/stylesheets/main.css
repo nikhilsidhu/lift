@@ -14,6 +14,7 @@
   --button-border-color--highlight: white;
   --hover-blue: rgb(83, 193, 226);
   --hover-yellow: rgb(255, 255, 213);
+  --input-border-color: #719bc7;
 }
 
 html {
@@ -295,47 +296,52 @@ body {
 }
 
 .form {
+  max-width: 600px;
+  width: 100%;
+}
+.form__container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: var(--bg-blue);
-  width: 50%;
-  padding: 3rem 1rem;
+  padding: 3rem;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background-color: var(--bg-blue);
 }
-.form__input--text {
-  color: white;
-  background-color: #0b3b7a;
-  border: 1px solid rgba(255, 255, 255, 0.363);
-  transition: all 0.3s ease-in;
-}
-.form__input--text:focus {
-  color: white;
-  background-color: transparent;
-  outline: none;
-}
-.form__input--text::-moz-placeholder {
+.form::-moz-placeholder {
   color: var(--placeholder-color);
 }
-.form__input--text:-ms-input-placeholder {
+.form:-ms-input-placeholder {
   color: var(--placeholder-color);
 }
-.form__input--text::placeholder {
+.form::placeholder {
   color: var(--placeholder-color);
 }
 
 .input {
+  display: flex;
+  justify-content: center;
   color: var(--primary-text);
+  border: 1px solid var(--input-border-color);
+  background-color: transparent;
+}
+.input--no-border {
+  border: none;
+}
+.input:focus {
+  color: white;
+  background-color: transparent;
+  outline: none;
 }
 .input::-moz-placeholder {
-  color: var(--primary-text);
+  color: var(--placeholder-color);
 }
 .input:-ms-input-placeholder {
-  color: var(--primary-text);
+  color: var(--placeholder-color);
 }
 .input::placeholder {
-  color: var(--primary-text);
+  color: var(--placeholder-color);
 }
 .input--text {
   width: 50px;
@@ -368,9 +374,6 @@ body {
 .input--bg-dark, .input--bg-dark:focus {
   background-color: var(--background-color-dark);
   color: var(--primary-text);
-}
-.input--no-border {
-  border: none;
 }
 .input--number--edit {
   color: #e0fbfc;
@@ -716,4 +719,9 @@ p.svg:hover {
   .form__container {
     width: 80%;
   }
+}
+
+.form-control:focus {
+  box-shadow: 0 0 2px 1px var(--hover-yellow);
+  outline: none;
 }/*# sourceMappingURL=main.css.map */

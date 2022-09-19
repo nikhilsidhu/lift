@@ -1,8 +1,22 @@
 .input {
+  display: flex;
+  justify-content: center;
   color: var(--primary-text);
+  border: 1px solid var(--input-border-color);
+  background-color: transparent;
+
+  &--no-border {
+    border: none;
+  }
+
+  &:focus {
+    color: white;
+    background-color: transparent;
+    outline: none;
+  }
 
   &::placeholder {
-    color: var(--primary-text);
+    color: var(--placeholder-color);
   }
 
   &--text {
@@ -34,10 +48,6 @@
   &--bg-dark:focus {
     background-color: var(--background-color-dark);
     color: var(--primary-text);
-  }
-
-  &--no-border {
-    border: none;
   }
 
   &--number--edit {
